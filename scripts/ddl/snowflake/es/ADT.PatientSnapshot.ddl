@@ -1,0 +1,31 @@
+-- TABLE NAME - ADT.PatientSnapshot
+CREATE TABLE ADT.PatientSnapshot
+(
+    "PatientSnapshotKey"                 varchar(36) NOT NULL,
+    "PatientKey"                         varchar(36) NOT NULL,
+    "StartUTCDateTime"                   datetime    NOT NULL,
+    "StartLocalDateTime"                 datetime    NOT NULL,
+    "EndUTCDateTime"                     timestamp,
+    "EndLocalDateTime"                   timestamp,
+    "PatientSiloKey"                     varchar(36),
+    "PrefixText"                         VARCHAR(20),
+    "FirstName"                          VARCHAR(50),
+    "MiddleName"                         VARCHAR(50),
+    "LastName"                           VARCHAR(50),
+    "UnknownLastNameFlag"                BOOLEAN     NOT NULL,
+    "SuffixText"                         VARCHAR(20),
+    "BirthUTCDateTime"                   timestamp,
+    "BirthLocalDateTime"                 timestamp,
+    "BirthDateTimePrecisionInternalCode" VARCHAR(10),
+    "GenderKey"                          varchar(36),
+    "DeceasedFlag"                       BOOLEAN     NOT NULL,
+    "RestrictedAccessFlag"               BOOLEAN     NOT NULL,
+    "PlaceholderFlag"                    BOOLEAN     NOT NULL,
+    "CreatedAtDispensingDeviceKey"       varchar(36),
+    "FirstSnapshotFlag"                  BOOLEAN     NOT NULL,
+    "LastModifiedDispensingDeviceKey"    varchar(36),
+    "LastModifiedActorKey"               varchar(36),
+    "LastModifiedUTCDateTime"            datetime    NOT NULL,
+    "LastModifiedBinaryValue"            timestamp   NOT NULL,
+    PRIMARY KEY ("PatientSnapshotKey")
+);

@@ -1,0 +1,31 @@
+-- TABLE NAME - Tx.TransactionSession
+CREATE TABLE Tx.TransactionSession
+(
+    "TransactionSessionKey"              varchar(36) NOT NULL,
+    "SequenceNumber"                     integer     NOT NULL,
+    "TransactionSessionTypeInternalCode" VARCHAR(10) NOT NULL,
+    "SessionStartUTCDateTime"            datetime    NOT NULL,
+    "SessionStartLocalDateTime"          datetime    NOT NULL,
+    "SessionEndUTCDateTime"              timestamp,
+    "SessionEndLocalDateTime"            timestamp,
+    "AbnormalEndFlag"                    BOOLEAN     NOT NULL,
+    "UserAccountKey"                     varchar(36) NOT NULL,
+    "UserAccountSnapshotKey"             varchar(36) NOT NULL,
+    "FacilityKey"                        varchar(36) NOT NULL,
+    "FacilitySnapshotKey"                varchar(36) NOT NULL,
+    "DispensingDeviceKey"                varchar(36),
+    "DispensingDeviceSnapshotKey"        varchar(36),
+    "FirstRecoveryAttemptUTCDateTime"    timestamp,
+    "FirstRecoveryAttemptLocalDateTime"  timestamp,
+    "LastRecoveryAttemptUTCDateTime"     timestamp,
+    "LastRecoveryAttemptLocalDateTime"   timestamp,
+    "UnrecoveredTransactionFlag"         BOOLEAN     NOT NULL,
+    "RecoveryDataRecordQuantity"         integer,
+    "DoNotSendOutboundFlag"              BOOLEAN     NOT NULL,
+    "MobileFlag"                         BOOLEAN     NOT NULL,
+    "ItemTransactionRecordQuantity"      integer,
+    "LastModifiedDispensingDeviceKey"    varchar(36),
+    "LastModifiedUTCDateTime"            datetime    NOT NULL,
+    "LastModifiedBinaryValue"            timestamp   NOT NULL,
+    PRIMARY KEY ("TransactionSessionKey")
+);

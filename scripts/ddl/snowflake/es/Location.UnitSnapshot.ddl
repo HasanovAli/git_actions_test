@@ -1,0 +1,31 @@
+-- TABLE NAME - Location.UnitSnapshot
+CREATE TABLE Location.UnitSnapshot
+(
+    "UnitSnapshotKey"                               varchar(36) NOT NULL,
+    "UnitKey"                                       varchar(36) NOT NULL,
+    "StartUTCDateTime"                              datetime    NOT NULL,
+    "StartLocalDateTime"                            datetime    NOT NULL,
+    "EndUTCDateTime"                                timestamp,
+    "EndLocalDateTime"                              timestamp,
+    "FacilityKey"                                   varchar(36) NOT NULL,
+    "UnitName"                                      VARCHAR(50) NOT NULL,
+    "DescriptionText"                               VARCHAR(100),
+    "AutoDischargeModeInternalCode"                 VARCHAR(10),
+    "AutoDischargeDurationAmount"                   integer,
+    "AlternateAutoDischargeDurationAmount"          integer,
+    "ShowPreadmissionFlag"                          BOOLEAN     NOT NULL,
+    "ShowRecurringAdmissionFlag"                    BOOLEAN     NOT NULL,
+    "PreadmissionLeadDurationAmount"                integer,
+    "PreadmissionProlongedInactivityDurationAmount" integer,
+    "AdmissionProlongedInactivityDurationAmount"    integer,
+    "DischargeDelayDurationAmount"                  integer,
+    "TransferDelayDurationAmount"                   integer,
+    "OMNLNoticePrinterName"                         VARCHAR(260),
+    "LongTermCareFlag"                              BOOLEAN     NOT NULL,
+    "DeleteFlag"                                    BOOLEAN     NOT NULL,
+    "FirstSnapshotFlag"                             BOOLEAN     NOT NULL,
+    "LastModifiedActorKey"                          varchar(36),
+    "LastModifiedUTCDateTime"                       datetime    NOT NULL,
+    "LastModifiedBinaryValue"                       timestamp   NOT NULL,
+    PRIMARY KEY ("UnitSnapshotKey")
+);

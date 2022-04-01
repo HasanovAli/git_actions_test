@@ -1,0 +1,37 @@
+-- TABLE NAME - Item.MedItemSnapshot
+CREATE TABLE Item.MedItemSnapshot
+(
+    "MedItemSnapshotKey"                varchar(36)  NOT NULL,
+    "MedItemKey"                        varchar(36)  NOT NULL,
+    "StartUTCDateTime"                  datetime     NOT NULL,
+    "StartLocalDateTime"                datetime     NOT NULL,
+    "EndUTCDateTime"                    timestamp,
+    "EndLocalDateTime"                  timestamp,
+    "GenericName"                       VARCHAR(150) NOT NULL,
+    "PureGenericName"                   VARCHAR(150),
+    "SearchGenericName"                 VARCHAR(150),
+    "BrandName"                         VARCHAR(100),
+    "SearchBrandName"                   VARCHAR(100),
+    "StrengthText"                      VARCHAR(100),
+    "StrengthAmount"                    numeric(14, 4),
+    "StrengthUOMKey"                    varchar(36),
+    "StrengthExternalUOMKey"            varchar(36),
+    "ConcentrationVolumeAmount"         numeric(14, 4),
+    "ConcentrationVolumeUOMKey"         varchar(36),
+    "ConcentrationVolumeExternalUOMKey" varchar(36),
+    "TotalVolumeAmount"                 numeric(14, 4),
+    "TotalVolumeUOMKey"                 varchar(36),
+    "TotalVolumeExternalUOMKey"         varchar(36),
+    "DosageFormKey"                     varchar(36),
+    "MedClassKey"                       varchar(36),
+    "MedItemTypeInternalCode"           VARCHAR(10),
+    "MinimumDoseAmount"                 numeric(14, 4),
+    "MaximumDoseAmount"                 numeric(14, 4),
+    "DoseUOMKey"                        varchar(36),
+    "FirstSnapshotFlag"                 BOOLEAN      NOT NULL,
+    "LastModifiedActorKey"              varchar(36),
+    "LastModifiedUTCDateTime"           datetime     NOT NULL,
+    "LastModifiedBinaryValue"           timestamp    NOT NULL,
+    PRIMARY KEY ("MedItemSnapshotKey")
+);
+
