@@ -1,9 +1,9 @@
 -- TABLE NAME - Location.Location
-CREATE TABLE Location.Location
+CREATE OR REPLACE TABLE "Location"."Location"
 (
-    "LocationKey"              varchar(36) NOT NULL,
-    "LocationTypeInternalCode" VARCHAR(10) NOT NULL,
-    "LastModifiedUTCDateTime"  datetime    NOT NULL,
-    "LastModifiedBinaryValue"  timestamp   NOT NULL,
+    "LocationKey"              VARCHAR(36), -- NOT NULL,
+    "LocationTypeInternalCode" VARCHAR(10), -- NOT NULL,
+    "LastModifiedUTCDateTime"  DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"  VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("LocationKey")
 );

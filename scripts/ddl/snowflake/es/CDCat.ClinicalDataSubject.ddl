@@ -1,8 +1,8 @@
 -- TABLE NAME - CDCat.ClinicalDataSubject
-CREATE TABLE CDCat.ClinicalDataSubject
+CREATE OR REPLACE TABLE "CDCat"."ClinicalDataSubject"
 (
-    "ClinicalDataSubjectKey"  varchar(36) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "ClinicalDataSubjectKey"  VARCHAR(36), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("ClinicalDataSubjectKey")
 );

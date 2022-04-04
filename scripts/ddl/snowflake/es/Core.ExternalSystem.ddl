@@ -1,8 +1,8 @@
 -- TABLE NAME - Core.ExternalSystem
-CREATE TABLE Core.ExternalSystem
+CREATE OR REPLACE TABLE "Core"."ExternalSystem"
 (
-    "ExternalSystemKey"       varchar(36) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "ExternalSystemKey"       VARCHAR(36), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("ExternalSystemKey")
 );

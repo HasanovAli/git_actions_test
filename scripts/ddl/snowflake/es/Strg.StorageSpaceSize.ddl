@@ -1,14 +1,12 @@
 -- TABLE NAME - Strg.StorageSpaceSize
-CREATE TABLE Strg.StorageSpaceSize
+CREATE OR REPLACE TABLE "Strg"."StorageSpaceSize"
 (
-    "StorageSpaceSizeInternalCode" VARCHAR(10)  NOT NULL,
-    "DisplayCode"                  VARCHAR(10)  NOT NULL,
-    "DescriptionText"              VARCHAR(100) NOT NULL,
-    "SortValue"                    integer      NOT NULL,
-    "LastModifiedUTCDateTime"      datetime     NOT NULL,
-    "LastModifiedBinaryValue"      timestamp    NOT NULL,
-    PRIMARY KEY ("StorageSpaceSizeInternalCode"),
-    UNIQUE ("DisplayCode"),
-    UNIQUE ("DescriptionText")
+    "StorageSpaceSizeInternalCode" VARCHAR(10),  -- NOT NULL,
+    "DisplayCode"                  VARCHAR(10),  -- NOT NULL,
+    "DescriptionText"              VARCHAR(100), -- NOT NULL,
+    "SortValue"                    INTEGER,      -- NOT NULL,
+    "LastModifiedUTCDateTime"      DATETIME,     -- NOT NULL,
+    "LastModifiedBinaryValue"      VARBINARY,    -- NOT NULL,
+    PRIMARY KEY ("StorageSpaceSizeInternalCode")
 );
 

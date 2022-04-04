@@ -1,8 +1,8 @@
 -- TABLE NAME - ADT.PatientSilo
-CREATE TABLE ADT.PatientSilo
+CREATE OR REPLACE TABLE "ADT"."PatientSilo"
 (
-    "PatientSiloKey"          varchar(36) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "PatientSiloKey"          VARCHAR(36), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("PatientSiloKey")
 );

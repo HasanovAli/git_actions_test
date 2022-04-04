@@ -1,22 +1,23 @@
 -- TABLE NAME - HcOrder.PharmacyOrderTimingRecord
-CREATE TABLE HcOrder.PharmacyOrderTimingRecord
+CREATE OR REPLACE TABLE "HcOrder"."PharmacyOrderTimingRecord"
 (
-    "PharmacyOrderTimingRecordKey"        varchar(36) NOT NULL,
-    "PharmacyOrderTimingRecordSetKey"     varchar(36) NOT NULL,
-    "MemberNumber"                        integer     NOT NULL,
-    "ServiceDurationAmount"               numeric(14, 4),
+    "PharmacyOrderTimingRecordKey"        VARCHAR(36), -- NOT NULL,
+    "PharmacyOrderTimingRecordSetKey"     VARCHAR(36), -- NOT NULL,
+    "MemberNumber"                        INTEGER,     -- NOT NULL,
+    "ServiceDurationAmount"               NUMERIC(14, 4),
     "ServiceUnitOfDurationInternalCode"   VARCHAR(10),
-    "EffectiveUTCDateTime"                timestamp,
-    "EffectiveLocalDateTime"              timestamp,
-    "EffectiveDateOnlyFlag"               BOOLEAN     NOT NULL,
-    "ExpirationUTCDateTime"               timestamp,
-    "ExpirationLocalDateTime"             timestamp,
-    "ExpirationDateOnlyFlag"              BOOLEAN     NOT NULL,
+    "EffectiveUTCDateTime"                TIMESTAMP,
+    "EffectiveLocalDateTime"              TIMESTAMP,
+    "EffectiveDateOnlyFlag"               BOOLEAN,     -- NOT NULL,
+    "ExpirationUTCDateTime"               TIMESTAMP,
+    "ExpirationLocalDateTime"             TIMESTAMP,
+    "ExpirationDateOnlyFlag"              BOOLEAN,     -- NOT NULL,
     "ConditionText"                       VARCHAR(250),
     "TimingRecordConjunctionInternalCode" VARCHAR(10),
-    "TotalOccurrenceQuantity"             integer,
-    "LastModifiedUTCDateTime"             datetime    NOT NULL,
-    "LastModifiedBinaryValue"             timestamp   NOT NULL,
-    PRIMARY KEY ("PharmacyOrderTimingRecordKey"),
-    UNIQUE ("PharmacyOrderTimingRecordSetKey", "MemberNumber")
+    "TotalOccurrenceQuantity"             INTEGER,
+    "LastModifiedUTCDateTime"             DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"             VARBINARY,   -- NOT NULL,
+    PRIMARY KEY ("PharmacyOrderTimingRecordKey")
 );
+
+

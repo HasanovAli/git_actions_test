@@ -1,21 +1,21 @@
 -- TABLE NAME - Tx.StorageSpaceInventory
-CREATE TABLE Tx.StorageSpaceInventory
+CREATE OR REPLACE TABLE "Tx"."StorageSpaceInventory"
 (
-    "StorageSpaceInventoryKey"        varchar(36) NOT NULL,
-    "StorageSpaceItemKey"             varchar(36) NOT NULL,
-    "StartUTCDateTime"                datetime    NOT NULL,
-    "StartLocalDateTime"              datetime    NOT NULL,
-    "EndUTCDateTime"                  timestamp,
-    "EndLocalDateTime"                timestamp,
-    "InventoryQuantity"               numeric(14, 4),
-    "StrengthInventoryQuantity"       numeric(14, 4),
-    "StrengthUOMKey"                  varchar(36),
-    "VolumeInventoryQuantity"         numeric(14, 4),
-    "VolumeUOMKey"                    varchar(36),
-    "EarliestNextExpirationDate"      date,
-    "LastModifiedDispensingDeviceKey" varchar(36),
-    "LastModifiedActorKey"            varchar(36),
-    "LastModifiedUTCDateTime"         datetime    NOT NULL,
-    "LastModifiedBinaryValue"         timestamp   NOT NULL,
+    "StorageSpaceInventoryKey"        VARCHAR(36), -- NOT NULL,
+    "StorageSpaceItemKey"             VARCHAR(36), -- NOT NULL,
+    "StartUTCDateTime"                DATETIME,    -- NOT NULL,
+    "StartLocalDateTime"              DATETIME,    -- NOT NULL,
+    "EndUTCDateTime"                  TIMESTAMP,
+    "EndLocalDateTime"                TIMESTAMP,
+    "InventoryQuantity"               NUMERIC(14, 4),
+    "StrengthInventoryQuantity"       NUMERIC(14, 4),
+    "StrengthUOMKey"                  VARCHAR(36),
+    "VolumeInventoryQuantity"         NUMERIC(14, 4),
+    "VolumeUOMKey"                    VARCHAR(36),
+    "EarliestNextExpirationDate"      DATE,
+    "LastModifiedDispensingDeviceKey" VARCHAR(36),
+    "LastModifiedActorKey"            VARCHAR(36),
+    "LastModifiedUTCDateTime"         DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"         VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("StorageSpaceInventoryKey")
 );

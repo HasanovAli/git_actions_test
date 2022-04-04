@@ -1,8 +1,8 @@
 -- TABLE NAME - Rx.GCSMRestockGroup
-CREATE TABLE Rx.GCSMRestockGroup
+CREATE OR REPLACE TABLE "Rx"."GCSMRestockGroup"
 (
-    "GCSMRestockGroupKey"     varchar(36) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "GCSMRestockGroupKey"     VARCHAR(36), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("GCSMRestockGroupKey")
 );

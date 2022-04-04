@@ -1,17 +1,17 @@
 -- TABLE NAME - Strg.DispensingDeviceUnitRoom
-CREATE TABLE Strg.DispensingDeviceUnitRoom
+CREATE OR REPLACE TABLE "Strg"."DispensingDeviceUnitRoom"
 (
-    "DispensingDeviceUnitRoomKey" varchar(36) NOT NULL,
-    "DispensingDeviceKey"         varchar(36) NOT NULL,
-    "UnitRoomKey"                 varchar(36) NOT NULL,
-    "AssociationUTCDateTime"      datetime    NOT NULL,
-    "AssociationLocalDateTime"    datetime    NOT NULL,
-    "DisassociationUTCDateTime"   timestamp,
-    "DisassociationLocalDateTime" timestamp,
-    "AssociationActorKey"         varchar(36),
-    "DisassociationActorKey"      varchar(36),
-    "LastModifiedUTCDateTime"     datetime    NOT NULL,
-    "LastModifiedBinaryValue"     timestamp   NOT NULL,
+    "DispensingDeviceUnitRoomKey" VARCHAR(36), -- NOT NULL,
+    "DispensingDeviceKey"         VARCHAR(36), -- NOT NULL,
+    "UnitRoomKey"                 VARCHAR(36), -- NOT NULL,
+    "AssociationUTCDateTime"      DATETIME,    -- NOT NULL,
+    "AssociationLocalDateTime"    DATETIME,    -- NOT NULL,
+    "DisassociationUTCDateTime"   TIMESTAMP,
+    "DisassociationLocalDateTime" TIMESTAMP,
+    "AssociationActorKey"         VARCHAR(36),
+    "DisassociationActorKey"      VARCHAR(36),
+    "LastModifiedUTCDateTime"     DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"     VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("DispensingDeviceUnitRoomKey")
 );
 

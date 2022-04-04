@@ -1,12 +1,10 @@
 -- TABLE NAME - Core.UOMRole
-CREATE TABLE Core.UOMRole
+CREATE OR REPLACE TABLE "Core"."UOMRole"
 (
-    "UOMRoleInternalCode"     VARCHAR(10) NOT NULL,
-    "DescriptionText"         VARCHAR(50) NOT NULL,
-    "SortValue"               integer,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
-    PRIMARY KEY ("UOMRoleInternalCode"),
-    UNIQUE ("DescriptionText")
+    "UOMRoleInternalCode"     VARCHAR(10), -- NOT NULL,
+    "DescriptionText"         VARCHAR(50), -- NOT NULL,
+    "SortValue"               INTEGER,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
+    PRIMARY KEY ("UOMRoleInternalCode")
 );
-

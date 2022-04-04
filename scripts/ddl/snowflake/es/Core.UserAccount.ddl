@@ -1,16 +1,16 @@
 -- TABLE NAME - Core.UserAccount
-CREATE TABLE Core.UserAccount
+CREATE OR REPLACE TABLE "Core"."UserAccount"
 (
-    "UserAccountKey"                                    varchar(36) NOT NULL,
-    "SurvivingFlag"                                     BOOLEAN     NOT NULL,
-    "LastPasswordExpirationNoticeUTCDateTime"           timestamp,
-    "LastPasswordExpirationNoticeLocalDateTime"         timestamp,
-    "LastSuccessfulPasswordAuthenticationUTCDateTime"   timestamp,
-    "LastSuccessfulPasswordAuthenticationLocalDateTime" timestamp,
-    "LastFacilityKey"                                   varchar(36),
-    "LastAreaKey"                                       varchar(36),
-    "LastModifiedDispensingDeviceKey"                   varchar(36),
-    "LastModifiedUTCDateTime"                           datetime    NOT NULL,
-    "LastModifiedBinaryValue"                           timestamp   NOT NULL,
+    "UserAccountKey"                                    VARCHAR(36), -- NOT NULL,
+    "SurvivingFlag"                                     BOOLEAN,     -- NOT NULL,
+    "LastPasswordExpirationNoticeUTCDateTime"           TIMESTAMP,
+    "LastPasswordExpirationNoticeLocalDateTime"         TIMESTAMP,
+    "LastSuccessfulPasswordAuthenticationUTCDateTime"   TIMESTAMP,
+    "LastSuccessfulPasswordAuthenticationLocalDateTime" TIMESTAMP,
+    "LastFacilityKey"                                   VARCHAR(36),
+    "LastAreaKey"                                       VARCHAR(36),
+    "LastModifiedDispensingDeviceKey"                   VARCHAR(36),
+    "LastModifiedUTCDateTime"                           DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"                           VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("UserAccountKey")
 );

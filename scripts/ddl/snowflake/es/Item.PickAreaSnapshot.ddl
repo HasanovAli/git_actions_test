@@ -1,19 +1,19 @@
 -- TABLE NAME - Item.PickAreaSnapshot
-CREATE TABLE Item.PickAreaSnapshot
+CREATE OR REPLACE TABLE "Item"."PickAreaSnapshot"
 (
-    "PickAreaSnapshotKey"     varchar(36)  NOT NULL,
-    "PickAreaKey"             varchar(36)  NOT NULL,
-    "StartUTCDateTime"        datetime     NOT NULL,
-    "StartLocalDateTime"      datetime     NOT NULL,
-    "EndUTCDateTime"          timestamp,
-    "EndLocalDateTime"        timestamp,
-    "FacilityKey"             varchar(36)  NOT NULL,
-    "PickAreaName"            VARCHAR(100) NOT NULL,
-    "DeleteFlag"              BOOLEAN      NOT NULL,
-    "FirstSnapshotFlag"       BOOLEAN      NOT NULL,
-    "LastModifiedActorKey"    varchar(36),
-    "LastModifiedUTCDateTime" datetime     NOT NULL,
-    "LastModifiedBinaryValue" timestamp    NOT NULL,
+    "PickAreaSnapshotKey"     VARCHAR(36),  -- NOT NULL,
+    "PickAreaKey"             VARCHAR(36),  -- NOT NULL,
+    "StartUTCDateTime"        DATETIME,     -- NOT NULL,
+    "StartLocalDateTime"      DATETIME,     -- NOT NULL,
+    "EndUTCDateTime"          TIMESTAMP,
+    "EndLocalDateTime"        TIMESTAMP,
+    "FacilityKey"             VARCHAR(36),  -- NOT NULL,
+    "PickAreaName"            VARCHAR(100), -- NOT NULL,
+    "DeleteFlag"              BOOLEAN,      -- NOT NULL,
+    "FirstSnapshotFlag"       BOOLEAN,      -- NOT NULL,
+    "LastModifiedActorKey"    VARCHAR(36),
+    "LastModifiedUTCDateTime" DATETIME,     -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,    -- NOT NULL,
     PRIMARY KEY ("PickAreaSnapshotKey")
 );
 

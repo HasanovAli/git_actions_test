@@ -1,9 +1,9 @@
 -- TABLE NAME - Item.PickArea
-CREATE TABLE Item.PickArea
+CREATE OR REPLACE TABLE "Item"."PickArea"
 (
-    "PickAreaKey"             varchar(36) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "PickAreaKey"             VARCHAR(36), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("PickAreaKey")
 );
 

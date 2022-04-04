@@ -1,20 +1,20 @@
 -- TABLE NAME - Location.AreaSnapshot
-CREATE TABLE Location.AreaSnapshot
+CREATE OR REPLACE TABLE "Location"."AreaSnapshot"
 (
-    "AreaSnapshotKey"         varchar(36)  NOT NULL,
-    "AreaKey"                 varchar(36)  NOT NULL,
-    "StartUTCDateTime"        datetime     NOT NULL,
-    "StartLocalDateTime"      datetime     NOT NULL,
-    "EndUTCDateTime"          timestamp,
-    "EndLocalDateTime"        timestamp,
-    "FacilityKey"             varchar(36)  NOT NULL,
-    "AreaName"                VARCHAR(100) NOT NULL,
+    "AreaSnapshotKey"         VARCHAR(36),  -- NOT NULL,
+    "AreaKey"                 VARCHAR(36),  -- NOT NULL,
+    "StartUTCDateTime"        DATETIME,     -- NOT NULL,
+    "StartLocalDateTime"      DATETIME,     -- NOT NULL,
+    "EndUTCDateTime"          TIMESTAMP,
+    "EndLocalDateTime"        TIMESTAMP,
+    "FacilityKey"             VARCHAR(36),  -- NOT NULL,
+    "AreaName"                VARCHAR(100), -- NOT NULL,
     "DescriptionText"         VARCHAR(100),
-    "AllUserRolesFlag"        BOOLEAN      NOT NULL,
-    "DeleteFlag"              BOOLEAN      NOT NULL,
-    "FirstSnapshotFlag"       BOOLEAN      NOT NULL,
-    "LastModifiedActorKey"    varchar(36),
-    "LastModifiedUTCDateTime" datetime     NOT NULL,
-    "LastModifiedBinaryValue" timestamp    NOT NULL,
+    "AllUserRolesFlag"        BOOLEAN,      -- NOT NULL,
+    "DeleteFlag"              BOOLEAN,      -- NOT NULL,
+    "FirstSnapshotFlag"       BOOLEAN,      -- NOT NULL,
+    "LastModifiedActorKey"    VARCHAR(36),
+    "LastModifiedUTCDateTime" DATETIME,     -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,    -- NOT NULL,
     PRIMARY KEY ("AreaSnapshotKey")
 );

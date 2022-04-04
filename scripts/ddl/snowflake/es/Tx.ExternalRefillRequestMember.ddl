@@ -1,17 +1,17 @@
 -- TABLE NAME - Tx.ExternalRefillRequestMember
-CREATE TABLE Tx.ExternalRefillRequestMember
+CREATE OR REPLACE TABLE "Tx"."ExternalRefillRequestMember"
 (
-    "ExternalRefillRequestMemberKey"  varchar(36) NOT NULL,
-    "ExternalRefillRequestKey"        varchar(36) NOT NULL,
-    "ItemID"                          VARCHAR(50) NOT NULL,
-    "ItemKey"                         varchar(36),
-    "RefillQuantity"                  integer     NOT NULL,
-    "ExpirationDate"                  date,
+    "ExternalRefillRequestMemberKey"  VARCHAR(36), -- NOT NULL,
+    "ExternalRefillRequestKey"        VARCHAR(36), -- NOT NULL,
+    "ItemID"                          VARCHAR(50), -- NOT NULL,
+    "ItemKey"                         VARCHAR(36),
+    "RefillQuantity"                  INTEGER,     -- NOT NULL,
+    "ExpirationDate"                  DATE,
     "LotID"                           VARCHAR(20),
-    "CompletedUTCDateTime"            timestamp,
-    "CompletedLocalDateTime"          timestamp,
-    "LastModifiedDispensingDeviceKey" varchar(36),
-    "LastModifiedUTCDateTime"         datetime    NOT NULL,
-    "LastModifiedBinaryValue"         timestamp   NOT NULL,
+    "CompletedUTCDateTime"            TIMESTAMP,
+    "CompletedLocalDateTime"          TIMESTAMP,
+    "LastModifiedDispensingDeviceKey" VARCHAR(36),
+    "LastModifiedUTCDateTime"         DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"         VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("ExternalRefillRequestMemberKey")
 );

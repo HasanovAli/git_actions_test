@@ -1,8 +1,8 @@
 -- TABLE NAME - Location.Area
-CREATE TABLE Location.Area
+CREATE OR REPLACE TABLE "Location"."Area"
 (
-    "AreaKey"                 varchar(36) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "AreaKey"                 VARCHAR(36), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("AreaKey")
 );

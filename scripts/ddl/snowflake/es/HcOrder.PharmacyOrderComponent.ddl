@@ -1,22 +1,21 @@
 -- TABLE NAME - HcOrder.PharmacyOrderComponent
-CREATE TABLE HcOrder.PharmacyOrderComponent
+CREATE OR REPLACE TABLE "HcOrder"."PharmacyOrderComponent"
 (
-    "PharmacyOrderComponentKey"              varchar(36) NOT NULL,
-    "PharmacyOrderComponentSetKey"           varchar(36) NOT NULL,
-    "MemberNumber"                           integer     NOT NULL,
-    "PharmacyOrderComponentTypeInternalCode" VARCHAR(10) NOT NULL,
-    "MedItemKey"                             varchar(36),
-    "ComponentID"                            VARCHAR(50) NOT NULL,
+    "PharmacyOrderComponentKey"              VARCHAR(36), -- NOT NULL,
+    "PharmacyOrderComponentSetKey"           VARCHAR(36), -- NOT NULL,
+    "MemberNumber"                           INTEGER,     -- NOT NULL,
+    "PharmacyOrderComponentTypeInternalCode" VARCHAR(10), -- NOT NULL,
+    "MedItemKey"                             VARCHAR(36),
+    "ComponentID"                            VARCHAR(50), -- NOT NULL,
     "ComponentDescriptionText"               VARCHAR(250),
-    "ComponentAmount"                        numeric(14, 4),
-    "ComponentUOMKey"                        varchar(36),
-    "ComponentExternalUOMKey"                varchar(36),
-    "NetRemoveOccurrenceQuantity"            integer     NOT NULL,
-    "LinkedUTCDateTime"                      timestamp,
-    "LinkedLocalDateTime"                    timestamp,
+    "ComponentAmount"                        NUMERIC(14, 4),
+    "ComponentUOMKey"                        VARCHAR(36),
+    "ComponentExternalUOMKey"                VARCHAR(36),
+    "NetRemoveOccurrenceQuantity"            INTEGER,     -- NOT NULL,
+    "LinkedUTCDateTime"                      TIMESTAMP,
+    "LinkedLocalDateTime"                    TIMESTAMP,
     "OriginalComponentID"                    VARCHAR(50),
-    "LastModifiedUTCDateTime"                datetime    NOT NULL,
-    "LastModifiedBinaryValue"                timestamp   NOT NULL,
-    PRIMARY KEY ("PharmacyOrderComponentKey"),
-    UNIQUE ("PharmacyOrderComponentSetKey", "MemberNumber")
+    "LastModifiedUTCDateTime"                DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"                VARBINARY,   -- NOT NULL,
+    PRIMARY KEY ("PharmacyOrderComponentKey")
 );

@@ -1,21 +1,21 @@
 -- TABLE NAME - Tx.ItemTransaction
-CREATE TABLE Tx.ItemTransaction
+CREATE OR REPLACE TABLE "Tx"."ItemTransaction"
 (
-    "ItemTransactionKey"                   varchar(36) NOT NULL,
-    "SequenceNumber"                       integer     NOT NULL,
+    "ItemTransactionKey"                   VARCHAR(36), -- NOT NULL,
+    "SequenceNumber"                       INTEGER,     -- NOT NULL,
     "TransactionSessionTypeInternalCode"   VARCHAR(10),
-    "PharmacyOrderKey"                     varchar(36),
-    "PharmacyOrderComponentKey"            varchar(36),
-    "RemainingDispenseQuantity"            numeric(28, 18),
-    "OriginalUndocumentedDisposeQuantity"  numeric(28, 18),
-    "RemainingUndocumentedDisposeQuantity" numeric(28, 18),
-    "OutstandingTransactionQuantity"       numeric(28, 18),
-    "ResolvedUndocumentedDisposeFlag"      BOOLEAN     NOT NULL,
-    "PharmacyOrderTaskUTCDateTime"         timestamp,
-    "PharmacyOrderTaskLocalDateTime"       timestamp,
-    "GCSMItemTransactionRecordFlag"        BOOLEAN     NOT NULL,
-    "LastModifiedDispensingDeviceKey"      varchar(36),
-    "LastModifiedUTCDateTime"              datetime    NOT NULL,
-    "LastModifiedBinaryValue"              timestamp   NOT NULL,
+    "PharmacyOrderKey"                     VARCHAR(36),
+    "PharmacyOrderComponentKey"            VARCHAR(36),
+    "RemainingDispenseQuantity"            NUMERIC(28, 18),
+    "OriginalUndocumentedDisposeQuantity"  NUMERIC(28, 18),
+    "RemainingUndocumentedDisposeQuantity" NUMERIC(28, 18),
+    "OutstandingTransactionQuantity"       NUMERIC(28, 18),
+    "ResolvedUndocumentedDisposeFlag"      BOOLEAN,     -- NOT NULL,
+    "PharmacyOrderTaskUTCDateTime"         TIMESTAMP,
+    "PharmacyOrderTaskLocalDateTime"       TIMESTAMP,
+    "GCSMItemTransactionRecordFlag"        BOOLEAN,     -- NOT NULL,
+    "LastModifiedDispensingDeviceKey"      VARCHAR(36),
+    "LastModifiedUTCDateTime"              DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"              VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("ItemTransactionKey")
 );

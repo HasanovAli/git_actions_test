@@ -1,14 +1,14 @@
 -- TABLE NAME - Rx.GCSMRestockGroupDispensingDevice
-CREATE TABLE Rx.GCSMRestockGroupDispensingDevice
+CREATE OR REPLACE TABLE "Rx"."GCSMRestockGroupDispensingDevice"
 (
-    "GCSMRestockGroupDispensingDeviceKey" varchar(36) NOT NULL,
-    "GCSMRestockGroupKey"                 varchar(36) NOT NULL,
-    "DispensingDeviceKey"                 varchar(36) NOT NULL,
-    "AssociationDateTime"                 timestamp with time zone NOT NULL,
-    "DisassociationDateTime"              timestamp with time zone,
-    "AssociationActorKey"                 varchar(36),
-    "DisassociationActorKey"              varchar(36),
-    "LastModifiedUTCDateTime"             datetime    NOT NULL,
-    "LastModifiedBinaryValue"             timestamp   NOT NULL,
+    "GCSMRestockGroupDispensingDeviceKey" VARCHAR(36),              -- NOT NULL,
+    "GCSMRestockGroupKey"                 VARCHAR(36),              -- NOT NULL,
+    "DispensingDeviceKey"                 VARCHAR(36),              -- NOT NULL,
+    "AssociationDateTime"                 TIMESTAMP WITH TIME ZONE, -- NOT NULL,
+    "DisassociationDateTime"              TIMESTAMP WITH TIME ZONE,
+    "AssociationActorKey"                 VARCHAR(36),
+    "DisassociationActorKey"              VARCHAR(36),
+    "LastModifiedUTCDateTime"             DATETIME,                 -- NOT NULL,
+    "LastModifiedBinaryValue"             VARBINARY,                -- NOT NULL,
     PRIMARY KEY ("GCSMRestockGroupDispensingDeviceKey")
 );

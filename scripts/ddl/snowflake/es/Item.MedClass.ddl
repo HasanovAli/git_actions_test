@@ -1,19 +1,19 @@
 -- TABLE NAME - Item.MedClass
-CREATE TABLE Item.MedClass
+CREATE OR REPLACE TABLE "Item"."MedClass"
 (
-    "MedClassKey"             varchar(36) NOT NULL,
-    "ExternalSystemKey"       varchar(36) NOT NULL,
-    "MedClassCode"            VARCHAR(20) NOT NULL,
+    "MedClassKey"             VARCHAR(36), -- NOT NULL,
+    "ExternalSystemKey"       VARCHAR(36), -- NOT NULL,
+    "MedClassCode"            VARCHAR(20), -- NOT NULL,
     "DescriptionText"         VARCHAR(100),
-    "ControlledFlag"          BOOLEAN     NOT NULL,
-    "FormularyTemplateKey"    varchar(36),
-    "SortValue"               integer,
-    "DeleteFlag"              BOOLEAN     NOT NULL,
-    "CreatedUTCDateTime"      timestamp,
-    "CreatedLocalDateTime"    timestamp,
-    "LastModifiedActorKey"    varchar(36),
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "ControlledFlag"          BOOLEAN,     -- NOT NULL,
+    "FormularyTemplateKey"    VARCHAR(36),
+    "SortValue"               INTEGER,
+    "DeleteFlag"              BOOLEAN,     -- NOT NULL,
+    "CreatedUTCDateTime"      TIMESTAMP,
+    "CreatedLocalDateTime"    TIMESTAMP,
+    "LastModifiedActorKey"    VARCHAR(36),
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("MedClassKey")
 );
 

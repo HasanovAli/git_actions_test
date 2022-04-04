@@ -1,16 +1,16 @@
 -- TABLE NAME - Tx.ClinicalDataNotice
-CREATE TABLE Tx.ClinicalDataNotice
+CREATE OR REPLACE TABLE "Tx"."ClinicalDataNotice"
 (
-    "ClinicalDataNoticeKey"           varchar(36) NOT NULL,
-    "ClinicalDataSubjectSnapshotKey"  varchar(36) NOT NULL,
-    "ClinicalDataSubjectKey"          varchar(36) NOT NULL,
-    "NoticeUTCDateTime"               datetime    NOT NULL,
-    "NoticeLocalDateTime"             datetime    NOT NULL,
-    "ClinicalDataResponseKey"         varchar(36),
-    "ClinicalDataResponseSnapshotKey" varchar(36),
+    "ClinicalDataNoticeKey"           VARCHAR(36), -- NOT NULL,
+    "ClinicalDataSubjectSnapshotKey"  VARCHAR(36), -- NOT NULL,
+    "ClinicalDataSubjectKey"          VARCHAR(36), -- NOT NULL,
+    "NoticeUTCDateTime"               DATETIME,    -- NOT NULL,
+    "NoticeLocalDateTime"             DATETIME,    -- NOT NULL,
+    "ClinicalDataResponseKey"         VARCHAR(36),
+    "ClinicalDataResponseSnapshotKey" VARCHAR(36),
     "ResponseFreeFormText"            VARCHAR(250),
-    "LastModifiedDispensingDeviceKey" varchar(36),
-    "LastModifiedUTCDateTime"         datetime    NOT NULL,
-    "LastModifiedBinaryValue"         timestamp   NOT NULL,
+    "LastModifiedDispensingDeviceKey" VARCHAR(36),
+    "LastModifiedUTCDateTime"         DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"         VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("ClinicalDataNoticeKey")
 );

@@ -1,16 +1,16 @@
 -- TABLE NAME - ADT.PatientIDSet
-CREATE TABLE ADT.PatientIDSet
+CREATE OR REPLACE TABLE "ADT"."PatientIDSet"
 (
-    "PatientIDSetKey"                 varchar(36) NOT NULL,
-    "PatientKey"                      varchar(36) NOT NULL,
-    "StartUTCDateTime"                datetime    NOT NULL,
-    "StartLocalDateTime"              datetime    NOT NULL,
-    "EndUTCDateTime"                  timestamp,
-    "EndLocalDateTime"                timestamp,
-    "CreatedActorKey"                 varchar(36),
-    "EndedActorKey"                   varchar(36),
-    "LastModifiedDispensingDeviceKey" varchar(36),
-    "LastModifiedUTCDateTime"         datetime    NOT NULL,
-    "LastModifiedBinaryValue"         timestamp   NOT NULL,
+    "PatientIDSetKey"                 VARCHAR(36), -- NOT NULL,
+    "PatientKey"                      VARCHAR(36), -- NOT NULL,
+    "StartUTCDateTime"                DATETIME,    -- NOT NULL,
+    "StartLocalDateTime"              DATETIME,    -- NOT NULL,
+    "EndUTCDateTime"                  TIMESTAMP,
+    "EndLocalDateTime"                TIMESTAMP,
+    "CreatedActorKey"                 VARCHAR(36),
+    "EndedActorKey"                   VARCHAR(36),
+    "LastModifiedDispensingDeviceKey" VARCHAR(36),
+    "LastModifiedUTCDateTime"         DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"         VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("PatientIDSetKey")
 );

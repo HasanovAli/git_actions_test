@@ -1,16 +1,16 @@
 -- TABLE NAME - Tx.DiscrepancyNote
-CREATE TABLE Tx.DiscrepancyNote
+CREATE OR REPLACE TABLE "Tx"."DiscrepancyNote"
 (
-    "DiscrepancyNoteKey"              varchar(36)  NOT NULL,
-    "ItemTransactionKey"              varchar(36)  NOT NULL,
-    "NoteText"                        VARCHAR(250) NOT NULL,
-    "CreatedUTCDateTime"              datetime     NOT NULL,
-    "CreatedLocalDateTime"            datetime     NOT NULL,
-    "CreatedUserAccountKey"           varchar(36)  NOT NULL,
-    "CreatedUserAccountSnapshotKey"   varchar(36)  NOT NULL,
-    "LastModifiedDispensingDeviceKey" varchar(36),
-    "LastModifiedActorKey"            varchar(36),
-    "LastModifiedUTCDateTime"         datetime     NOT NULL,
-    "LastModifiedBinaryValue"         timestamp    NOT NULL,
+    "DiscrepancyNoteKey"              VARCHAR(36),  -- NOT NULL,
+    "ItemTransactionKey"              VARCHAR(36),  -- NOT NULL,
+    "NoteText"                        VARCHAR(250), -- NOT NULL,
+    "CreatedUTCDateTime"              DATETIME,     -- NOT NULL,
+    "CreatedLocalDateTime"            DATETIME,     -- NOT NULL,
+    "CreatedUserAccountKey"           VARCHAR(36),  -- NOT NULL,
+    "CreatedUserAccountSnapshotKey"   VARCHAR(36),  -- NOT NULL,
+    "LastModifiedDispensingDeviceKey" VARCHAR(36),
+    "LastModifiedActorKey"            VARCHAR(36),
+    "LastModifiedUTCDateTime"         DATETIME,     -- NOT NULL,
+    "LastModifiedBinaryValue"         VARBINARY,    -- NOT NULL,
     PRIMARY KEY ("DiscrepancyNoteKey")
 );

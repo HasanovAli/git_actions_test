@@ -1,9 +1,9 @@
 -- TABLE NAME - Core.Actor
-CREATE TABLE Core.Actor
+CREATE OR REPLACE TABLE "Core"."Actor"
 (
-    "ActorKey"                varchar(36) NOT NULL,
-    "ActorTypeInternalCode"   VARCHAR(10) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "ActorKey"                VARCHAR(36), -- NOT NULL,
+    "ActorTypeInternalCode"   VARCHAR(10), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("ActorKey")
 );

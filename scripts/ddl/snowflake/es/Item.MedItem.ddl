@@ -1,9 +1,9 @@
 -- TABLE NAME - Item.MedItem
-CREATE TABLE Item.MedItem
+CREATE OR REPLACE TABLE "Item"."MedItem"
 (
-    "MedItemKey"              varchar(36) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "MedItemKey"              VARCHAR(36), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("MedItemKey")
 );
 

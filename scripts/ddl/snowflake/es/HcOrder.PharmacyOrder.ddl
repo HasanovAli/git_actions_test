@@ -1,20 +1,20 @@
 -- TABLE NAME - HcOrder.PharmacyOrder
-CREATE TABLE HcOrder.PharmacyOrder
+CREATE OR REPLACE TABLE "HcOrder"."PharmacyOrder"
 (
-    "PharmacyOrderKey"                varchar(36) NOT NULL,
-    "CreatedUTCDateTime"              timestamp,
-    "CreatedLocalDateTime"            timestamp,
-    "EffectiveUTCDateTime"            timestamp,
-    "EffectiveLocalDateTime"          timestamp,
-    "EffectiveDateOnlyFlag"           BOOLEAN     NOT NULL,
-    "ExpirationUTCDateTime"           timestamp,
-    "ExpirationLocalDateTime"         timestamp,
-    "ExpirationDateOnlyFlag"          BOOLEAN     NOT NULL,
-    "TotalOccurrenceQuantity"         integer,
-    "NetRemoveOccurrenceQuantity"     integer     NOT NULL,
-    "CompletedFlag"                   BOOLEAN     NOT NULL,
-    "LastModifiedDispensingDeviceKey" varchar(36),
-    "LastModifiedUTCDateTime"         datetime    NOT NULL,
-    "LastModifiedBinaryValue"         timestamp   NOT NULL,
+    "PharmacyOrderKey"                VARCHAR(36), -- NOT NULL,
+    "CreatedUTCDateTime"              TIMESTAMP,
+    "CreatedLocalDateTime"            TIMESTAMP,
+    "EffectiveUTCDateTime"            TIMESTAMP,
+    "EffectiveLocalDateTime"          TIMESTAMP,
+    "EffectiveDateOnlyFlag"           BOOLEAN,     -- NOT NULL,
+    "ExpirationUTCDateTime"           TIMESTAMP,
+    "ExpirationLocalDateTime"         TIMESTAMP,
+    "ExpirationDateOnlyFlag"          BOOLEAN,     -- NOT NULL,
+    "TotalOccurrenceQuantity"         INTEGER,
+    "NetRemoveOccurrenceQuantity"     INTEGER,     -- NOT NULL,
+    "CompletedFlag"                   BOOLEAN,     -- NOT NULL,
+    "LastModifiedDispensingDeviceKey" VARCHAR(36),
+    "LastModifiedUTCDateTime"         DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"         VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("PharmacyOrderKey")
 );

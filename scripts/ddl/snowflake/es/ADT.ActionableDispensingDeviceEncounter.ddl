@@ -1,10 +1,10 @@
 -- TABLE NAME - ADT.ActionableDispensingDeviceEncounter
-CREATE TABLE ADT.ActionableDispensingDeviceEncounter
+CREATE OR REPLACE TABLE "ADT"."ActionableDispensingDeviceEncounter"
 (
-    "ActionableDispensingDeviceEncounterKey" varchar(36) NOT NULL,
-    "EncounterKey"                           varchar(36) NOT NULL,
-    "AutoDischargeUTCDateTime"               timestamp,
-    "LastModifiedUTCDateTime"                datetime    NOT NULL,
-    "LastModifiedBinaryValue"                timestamp   NOT NULL,
+    "ActionableDispensingDeviceEncounterKey" VARCHAR(36), -- NOT NULL,
+    "EncounterKey"                           VARCHAR(36), -- NOT NULL,
+    "AutoDischargeUTCDateTime"               TIMESTAMP,
+    "LastModifiedUTCDateTime"                DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"                VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("ActionableDispensingDeviceEncounterKey")
 );

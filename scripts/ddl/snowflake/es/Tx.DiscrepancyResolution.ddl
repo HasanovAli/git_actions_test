@@ -1,17 +1,16 @@
 -- TABLE NAME - Tx.DiscrepancyResolution
-CREATE TABLE Tx.DiscrepancyResolution
+CREATE OR REPLACE TABLE "Tx"."DiscrepancyResolution"
 (
-    "DiscrepancyResolutionKey"              varchar(36)  NOT NULL,
+    "DiscrepancyResolutionKey"              VARCHAR(36),  -- NOT NULL,
     "DiscrepancyResolutionInternalCode"     VARCHAR(50),
-    "FacilityKey"                           varchar(36),
-    "DescriptionText"                       VARCHAR(250) NOT NULL,
-    "DiscrepancyResolutionTypeInternalCode" VARCHAR(20)  NOT NULL,
-    "ActiveFlag"                            BOOLEAN      NOT NULL,
-    "CreatedUTCDateTime"                    timestamp,
-    "CreatedLocalDateTime"                  timestamp,
-    "LastModifiedActorKey"                  varchar(36),
-    "LastModifiedUTCDateTime"               datetime     NOT NULL,
-    "LastModifiedBinaryValue"               timestamp    NOT NULL,
-    PRIMARY KEY ("DiscrepancyResolutionKey"),
-    UNIQUE ("FacilityKey", "DescriptionText", "DiscrepancyResolutionTypeInternalCode")
+    "FacilityKey"                           VARCHAR(36),
+    "DescriptionText"                       VARCHAR(250), -- NOT NULL,
+    "DiscrepancyResolutionTypeInternalCode" VARCHAR(20),  -- NOT NULL,
+    "ActiveFlag"                            BOOLEAN,      -- NOT NULL,
+    "CreatedUTCDateTime"                    TIMESTAMP,
+    "CreatedLocalDateTime"                  TIMESTAMP,
+    "LastModifiedActorKey"                  VARCHAR(36),
+    "LastModifiedUTCDateTime"               DATETIME,     -- NOT NULL,
+    "LastModifiedBinaryValue"               VARBINARY,    -- NOT NULL,
+    PRIMARY KEY ("DiscrepancyResolutionKey")
 );

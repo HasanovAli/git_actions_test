@@ -1,21 +1,21 @@
 -- TABLE NAME - ADT.PatientSiloSnapshot
-CREATE TABLE ADT.PatientSiloSnapshot
+CREATE OR REPLACE TABLE "ADT"."PatientSiloSnapshot"
 (
-    "PatientSiloSnapshotKey"                varchar(36) NOT NULL,
-    "PatientSiloKey"                        varchar(36) NOT NULL,
-    "StartUTCDateTime"                      datetime    NOT NULL,
-    "StartLocalDateTime"                    datetime    NOT NULL,
-    "EndUTCDateTime"                        timestamp,
-    "EndLocalDateTime"                      timestamp,
-    "ADTSystemKey"                          varchar(36) NOT NULL,
-    "PatientSiloName"                       VARCHAR(50) NOT NULL,
-    "PrimaryPatientIDTypeKey"               varchar(36) NOT NULL,
-    "PatientAllergyProviderKey"             varchar(36),
-    "PatientPhysicalObservationProviderKey" varchar(36),
-    "DeleteFlag"                            BOOLEAN     NOT NULL,
-    "FirstSnapshotFlag"                     BOOLEAN     NOT NULL,
-    "LastModifiedActorKey"                  varchar(36),
-    "LastModifiedUTCDateTime"               datetime    NOT NULL,
-    "LastModifiedBinaryValue"               timestamp   NOT NULL,
+    "PatientSiloSnapshotKey"                VARCHAR(36), -- NOT NULL,
+    "PatientSiloKey"                        VARCHAR(36), -- NOT NULL,
+    "StartUTCDateTime"                      DATETIME,    -- NOT NULL,
+    "StartLocalDateTime"                    DATETIME,    -- NOT NULL,
+    "EndUTCDateTime"                        TIMESTAMP,
+    "EndLocalDateTime"                      TIMESTAMP,
+    "ADTSystemKey"                          VARCHAR(36), -- NOT NULL,
+    "PatientSiloName"                       VARCHAR(50), -- NOT NULL,
+    "PrimaryPatientIDTypeKey"               VARCHAR(36), -- NOT NULL,
+    "PatientAllergyProviderKey"             VARCHAR(36),
+    "PatientPhysicalObservationProviderKey" VARCHAR(36),
+    "DeleteFlag"                            BOOLEAN,     -- NOT NULL,
+    "FirstSnapshotFlag"                     BOOLEAN,     -- NOT NULL,
+    "LastModifiedActorKey"                  VARCHAR(36),
+    "LastModifiedUTCDateTime"               DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"               VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("PatientSiloSnapshotKey")
 );

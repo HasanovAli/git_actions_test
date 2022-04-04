@@ -1,22 +1,22 @@
 -- TABLE NAME - ADT.EncounterPatientLocation
-CREATE TABLE ADT.EncounterPatientLocation
+CREATE OR REPLACE TABLE "ADT"."EncounterPatientLocation"
 (
-    "EncounterPatientLocationKey"     varchar(36) NOT NULL,
-    "EncounterKey"                    varchar(36) NOT NULL,
-    "StartUTCDateTime"                datetime    NOT NULL,
-    "StartLocalDateTime"              datetime    NOT NULL,
-    "EndUTCDateTime"                  timestamp,
-    "EndLocalDateTime"                timestamp,
-    "AssignedFacilityKey"             varchar(36) NOT NULL,
-    "AssignedUnitKey"                 varchar(36),
-    "AssignedUnitRoomKey"             varchar(36),
+    "EncounterPatientLocationKey"     VARCHAR(36), -- NOT NULL,
+    "EncounterKey"                    VARCHAR(36), -- NOT NULL,
+    "StartUTCDateTime"                DATETIME,    -- NOT NULL,
+    "StartLocalDateTime"              DATETIME,    -- NOT NULL,
+    "EndUTCDateTime"                  TIMESTAMP,
+    "EndLocalDateTime"                TIMESTAMP,
+    "AssignedFacilityKey"             VARCHAR(36), -- NOT NULL,
+    "AssignedUnitKey"                 VARCHAR(36),
+    "AssignedUnitRoomKey"             VARCHAR(36),
     "AssignedBedID"                   VARCHAR(50),
-    "TemporaryUnitKey"                varchar(36),
-    "TemporaryUnitRoomKey"            varchar(36),
+    "TemporaryUnitKey"                VARCHAR(36),
+    "TemporaryUnitRoomKey"            VARCHAR(36),
     "TemporaryBedID"                  VARCHAR(50),
-    "LastModifiedDispensingDeviceKey" varchar(36),
-    "LastModifiedActorKey"            varchar(36),
-    "LastModifiedUTCDateTime"         datetime    NOT NULL,
-    "LastModifiedBinaryValue"         timestamp   NOT NULL,
+    "LastModifiedDispensingDeviceKey" VARCHAR(36),
+    "LastModifiedActorKey"            VARCHAR(36),
+    "LastModifiedUTCDateTime"         DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"         VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("EncounterPatientLocationKey")
 );

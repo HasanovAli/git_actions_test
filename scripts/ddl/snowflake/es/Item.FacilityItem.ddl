@@ -1,17 +1,17 @@
 -- TABLE NAME - Item.FacilityItem
-CREATE TABLE Item.FacilityItem
+CREATE OR REPLACE TABLE "Item"."FacilityItem"
 (
-    "FacilityItemKey"             varchar(36) NOT NULL,
-    "FacilityKey"                 varchar(36) NOT NULL,
-    "ItemKey"                     varchar(36) NOT NULL,
-    "AssociationUTCDateTime"      datetime    NOT NULL,
-    "AssociationLocalDateTime"    datetime    NOT NULL,
-    "DisassociationUTCDateTime"   timestamp,
-    "DisassociationLocalDateTime" timestamp,
-    "AssociationActorKey"         varchar(36),
-    "DisassociationActorKey"      varchar(36),
-    "LastModifiedUTCDateTime"     datetime    NOT NULL,
-    "LastModifiedBinaryValue"     timestamp   NOT NULL,
+    "FacilityItemKey"             VARCHAR(36), -- NOT NULL,
+    "FacilityKey"                 VARCHAR(36), -- NOT NULL,
+    "ItemKey"                     VARCHAR(36), -- NOT NULL,
+    "AssociationUTCDateTime"      DATETIME,    -- NOT NULL,
+    "AssociationLocalDateTime"    DATETIME,    -- NOT NULL,
+    "DisassociationUTCDateTime"   TIMESTAMP,
+    "DisassociationLocalDateTime" TIMESTAMP,
+    "AssociationActorKey"         VARCHAR(36),
+    "DisassociationActorKey"      VARCHAR(36),
+    "LastModifiedUTCDateTime"     DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"     VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("FacilityItemKey")
 );
 

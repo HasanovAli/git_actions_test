@@ -1,16 +1,16 @@
 -- TABLE NAME - Location.FacilityPatientSiloSnapshot
-CREATE TABLE Location.FacilityPatientSiloSnapshot
+CREATE OR REPLACE TABLE "Location"."FacilityPatientSiloSnapshot"
 (
-    "FacilityPatientSiloSnapshotKey"        varchar(36) NOT NULL,
-    "FacilityPatientSiloKey"                varchar(36) NOT NULL,
-    "StartUTCDateTime"                      datetime    NOT NULL,
-    "StartLocalDateTime"                    datetime    NOT NULL,
-    "EndUTCDateTime"                        timestamp,
-    "EndLocalDateTime"                      timestamp,
+    "FacilityPatientSiloSnapshotKey"        VARCHAR(36), -- NOT NULL,
+    "FacilityPatientSiloKey"                VARCHAR(36), -- NOT NULL,
+    "StartUTCDateTime"                      DATETIME,    -- NOT NULL,
+    "StartLocalDateTime"                    DATETIME,    -- NOT NULL,
+    "EndUTCDateTime"                        TIMESTAMP,
+    "EndLocalDateTime"                      TIMESTAMP,
     "FacilityPatientSiloStatusInternalCode" VARCHAR(10),
-    "FirstSnapshotFlag"                     BOOLEAN     NOT NULL,
-    "LastModifiedActorKey"                  varchar(36),
-    "LastModifiedUTCDateTime"               datetime    NOT NULL,
-    "LastModifiedBinaryValue"               timestamp   NOT NULL,
+    "FirstSnapshotFlag"                     BOOLEAN,     -- NOT NULL,
+    "LastModifiedActorKey"                  VARCHAR(36),
+    "LastModifiedUTCDateTime"               DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"               VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("FacilityPatientSiloSnapshotKey")
 );

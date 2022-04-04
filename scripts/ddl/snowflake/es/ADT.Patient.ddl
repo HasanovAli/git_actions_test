@@ -1,10 +1,10 @@
 -- TABLE NAME - ADT.Patient
-CREATE TABLE ADT.Patient
+CREATE OR REPLACE TABLE "ADT"."Patient"
 (
-    "PatientKey"                      varchar(36) NOT NULL,
-    "SurvivingFlag"                   BOOLEAN     NOT NULL,
-    "LastModifiedDispensingDeviceKey" varchar(36),
-    "LastModifiedUTCDateTime"         datetime    NOT NULL,
-    "LastModifiedBinaryValue"         timestamp   NOT NULL,
+    "PatientKey"                      VARCHAR(36), -- NOT NULL,
+    "SurvivingFlag"                   BOOLEAN,     -- NOT NULL,
+    "LastModifiedDispensingDeviceKey" VARCHAR(36),
+    "LastModifiedUTCDateTime"         DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"         VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("PatientKey")
 );

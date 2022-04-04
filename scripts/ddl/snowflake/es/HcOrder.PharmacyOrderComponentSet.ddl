@@ -1,15 +1,15 @@
 -- TABLE NAME - HcOrder.PharmacyOrderComponentSet
-CREATE TABLE HcOrder.PharmacyOrderComponentSet
+CREATE OR REPLACE TABLE "HcOrder"."PharmacyOrderComponentSet"
 (
-    "PharmacyOrderComponentSetKey" varchar(36) NOT NULL,
-    "PharmacyOrderKey"             varchar(36) NOT NULL,
-    "StartUTCDateTime"             datetime    NOT NULL,
-    "StartLocalDateTime"           datetime    NOT NULL,
-    "EndUTCDateTime"               timestamp,
-    "EndLocalDateTime"             timestamp,
-    "CreatedActorKey"              varchar(36),
-    "EndedActorKey"                varchar(36),
-    "LastModifiedUTCDateTime"      datetime    NOT NULL,
-    "LastModifiedBinaryValue"      timestamp   NOT NULL,
+    "PharmacyOrderComponentSetKey" VARCHAR(36), -- NOT NULL,
+    "PharmacyOrderKey"             VARCHAR(36), -- NOT NULL,
+    "StartUTCDateTime"             DATETIME,    -- NOT NULL,
+    "StartLocalDateTime"           DATETIME,    -- NOT NULL,
+    "EndUTCDateTime"               TIMESTAMP,
+    "EndLocalDateTime"             TIMESTAMP,
+    "CreatedActorKey"              VARCHAR(36),
+    "EndedActorKey"                VARCHAR(36),
+    "LastModifiedUTCDateTime"      DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"      VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("PharmacyOrderComponentSetKey")
 );

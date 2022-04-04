@@ -1,8 +1,8 @@
 -- TABLE NAME - Location.Unit
-CREATE TABLE Location.Unit
+CREATE OR REPLACE TABLE "Location"."Unit"
 (
-    "UnitKey"                 varchar(36) NOT NULL,
-    "LastModifiedUTCDateTime" datetime    NOT NULL,
-    "LastModifiedBinaryValue" timestamp   NOT NULL,
+    "UnitKey"                 VARCHAR(36), -- NOT NULL,
+    "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue" VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("UnitKey")
 );

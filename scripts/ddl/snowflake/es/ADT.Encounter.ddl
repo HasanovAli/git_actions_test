@@ -1,14 +1,14 @@
 -- TABLE NAME - ADT.Encounter
-CREATE TABLE ADT.Encounter
+CREATE OR REPLACE TABLE "ADT"."Encounter"
 (
-    "EncounterKey"                     varchar(36) NOT NULL,
-    "LastItemTransactionUTCDateTime"   timestamp,
-    "LastItemTransactionLocalDateTime" timestamp,
-    "SurvivingFlag"                    BOOLEAN     NOT NULL,
-    "CreatedUTCDateTime"               timestamp,
-    "CreatedLocalDateTime"             timestamp,
-    "LastModifiedDispensingDeviceKey"  varchar(36),
-    "LastModifiedUTCDateTime"          datetime    NOT NULL,
-    "LastModifiedBinaryValue"          timestamp   NOT NULL,
+    "EncounterKey"                     VARCHAR(36), -- NOT NULL,
+    "LastItemTransactionUTCDateTime"   TIMESTAMP,
+    "LastItemTransactionLocalDateTime" TIMESTAMP,
+    "SurvivingFlag"                    BOOLEAN,     -- NOT NULL,
+    "CreatedUTCDateTime"               TIMESTAMP,
+    "CreatedLocalDateTime"             TIMESTAMP,
+    "LastModifiedDispensingDeviceKey"  VARCHAR(36),
+    "LastModifiedUTCDateTime"          DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"          VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("EncounterKey")
 );
