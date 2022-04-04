@@ -6,8 +6,8 @@ CREATE OR REPLACE TABLE "ADT"."ActionableFacilityEncounter"
     "EncounterKey"                   VARCHAR(36), -- NOT NULL,
     "LastAssociatedUTCDateTime"      DATETIME,    -- NOT NULL,
     "LastAssociatedLocalDateTime"    DATETIME,    -- NOT NULL,
-    "LastDisassociatedUTCDateTime"   TIMESTAMP,
-    "LastDisassociatedLocalDateTime" TIMESTAMP,
+    "LastDisassociatedUTCDateTime"   DATETIME,
+    "LastDisassociatedLocalDateTime" DATETIME,
     "LastModifiedUTCDateTime"        DATETIME,    -- NOT NULL,
     "LastModifiedBinaryValue"        VARBINARY,   -- NOT NULL,
     PRIMARY KEY ("ActionableFacilityEncounterKey")

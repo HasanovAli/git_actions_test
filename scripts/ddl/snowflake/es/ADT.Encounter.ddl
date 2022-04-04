@@ -2,11 +2,11 @@
 CREATE OR REPLACE TABLE "ADT"."Encounter"
 (
     "EncounterKey"                     VARCHAR(36), -- NOT NULL,
-    "LastItemTransactionUTCDateTime"   TIMESTAMP,
-    "LastItemTransactionLocalDateTime" TIMESTAMP,
+    "LastItemTransactionUTCDateTime"   DATETIME,
+    "LastItemTransactionLocalDateTime" DATETIME,
     "SurvivingFlag"                    BOOLEAN,     -- NOT NULL,
-    "CreatedUTCDateTime"               TIMESTAMP,
-    "CreatedLocalDateTime"             TIMESTAMP,
+    "CreatedUTCDateTime"               DATETIME,
+    "CreatedLocalDateTime"             DATETIME,
     "LastModifiedDispensingDeviceKey"  VARCHAR(36),
     "LastModifiedUTCDateTime"          DATETIME,    -- NOT NULL,
     "LastModifiedBinaryValue"          VARBINARY,   -- NOT NULL,
