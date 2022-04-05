@@ -13,7 +13,7 @@ CREATE TABLE "dbo"."NDCMaster"
     "TradeName"                VARCHAR(225),
     "PackageSize"              INTEGER,
     "ManufacturerPackageSize"  INTEGER,   -- NOT NULL,
-    "Picture"                  VARBINARY,
+    "Picture"                  VARBINARY, -- Original MS SQL type is "image"
     "AHFSClassID"              INTEGER,
     "AHFSClassName"            VARCHAR(15),
     "DrugClassID"              INTEGER,

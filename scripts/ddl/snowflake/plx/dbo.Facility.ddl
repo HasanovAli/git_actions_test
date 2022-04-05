@@ -24,7 +24,7 @@ CREATE TABLE "dbo"."Facility"
     "LDAP_Domain"                VARCHAR(100),
     "LDAP_Group"                 VARCHAR(100),
     "LDAP_EnforceAuthentication" BOOLEAN,
-    "DefSecPolicyInfo"           STRING,
+    "DefSecPolicyInfo"           STRING,  -- Original MS SQL type is "xml"
     "EnforceSecPolicy"           BOOLEAN,
     "CDMSKey"                    VARCHAR(255),
     "CDMSActDate"                DATETIME,

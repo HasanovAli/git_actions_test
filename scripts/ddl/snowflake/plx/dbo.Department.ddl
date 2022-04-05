@@ -43,7 +43,7 @@ CREATE TABLE "dbo"."Department"
     "EnableOldestExpDate"                    BOOLEAN,
     "SmartOrderRouting"                      BOOLEAN,
     "PrintCompositLabel"                     BOOLEAN,
-    "AutoGenCycleCountSched"                 STRING,
+    "AutoGenCycleCountSched"                 STRING,  -- Original MS SQL type is "xml"
     "NotifyOrderPicked"                      BOOLEAN,
     "SubmitGLInfo"                           BOOLEAN,
     "ReqRestockDest"                         BOOLEAN,
