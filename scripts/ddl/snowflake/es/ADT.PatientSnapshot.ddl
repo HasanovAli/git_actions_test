@@ -1,0 +1,31 @@
+-- TABLE NAME - ADT.PatientSnapshot
+CREATE OR REPLACE TABLE "ADT"."PatientSnapshot"
+(
+    "PatientSnapshotKey"                 VARCHAR(36), -- NOT NULL,
+    "PatientKey"                         VARCHAR(36), -- NOT NULL,
+    "StartUTCDateTime"                   DATETIME,    -- NOT NULL,
+    "StartLocalDateTime"                 DATETIME,    -- NOT NULL,
+    "EndUTCDateTime"                     DATETIME,
+    "EndLocalDateTime"                   DATETIME,
+    "PatientSiloKey"                     VARCHAR(36),
+    "PrefixText"                         VARCHAR(20),
+    "FirstName"                          VARCHAR(50),
+    "MiddleName"                         VARCHAR(50),
+    "LastName"                           VARCHAR(50),
+    "UnknownLastNameFlag"                BOOLEAN,     -- NOT NULL,
+    "SuffixText"                         VARCHAR(20),
+    "BirthUTCDateTime"                   DATETIME,
+    "BirthLocalDateTime"                 DATETIME,
+    "BirthDateTimePrecisionInternalCode" VARCHAR(10),
+    "GenderKey"                          VARCHAR(36),
+    "DeceasedFlag"                       BOOLEAN,     -- NOT NULL,
+    "RestrictedAccessFlag"               BOOLEAN,     -- NOT NULL,
+    "PlaceholderFlag"                    BOOLEAN,     -- NOT NULL,
+    "CreatedAtDispensingDeviceKey"       VARCHAR(36),
+    "FirstSnapshotFlag"                  BOOLEAN,     -- NOT NULL,
+    "LastModifiedDispensingDeviceKey"    VARCHAR(36),
+    "LastModifiedActorKey"               VARCHAR(36),
+    "LastModifiedUTCDateTime"            DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"            VARBINARY,   -- NOT NULL,
+    PRIMARY KEY ("PatientSnapshotKey")
+);

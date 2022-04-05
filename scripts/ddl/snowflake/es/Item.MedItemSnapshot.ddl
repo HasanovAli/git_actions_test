@@ -1,0 +1,37 @@
+-- TABLE NAME - Item.MedItemSnapshot
+CREATE OR REPLACE TABLE "Item"."MedItemSnapshot"
+(
+    "MedItemSnapshotKey"                VARCHAR(36),  -- NOT NULL,
+    "MedItemKey"                        VARCHAR(36),  -- NOT NULL,
+    "StartUTCDateTime"                  DATETIME,     -- NOT NULL,
+    "StartLocalDateTime"                DATETIME,     -- NOT NULL,
+    "EndUTCDateTime"                    DATETIME,
+    "EndLocalDateTime"                  DATETIME,
+    "GenericName"                       VARCHAR(150), -- NOT NULL,
+    "PureGenericName"                   VARCHAR(150),
+    "SearchGenericName"                 VARCHAR(150),
+    "BrandName"                         VARCHAR(100),
+    "SearchBrandName"                   VARCHAR(100),
+    "StrengthText"                      VARCHAR(100),
+    "StrengthAmount"                    NUMERIC(14, 4),
+    "StrengthUOMKey"                    VARCHAR(36),
+    "StrengthExternalUOMKey"            VARCHAR(36),
+    "ConcentrationVolumeAmount"         NUMERIC(14, 4),
+    "ConcentrationVolumeUOMKey"         VARCHAR(36),
+    "ConcentrationVolumeExternalUOMKey" VARCHAR(36),
+    "TotalVolumeAmount"                 NUMERIC(14, 4),
+    "TotalVolumeUOMKey"                 VARCHAR(36),
+    "TotalVolumeExternalUOMKey"         VARCHAR(36),
+    "DosageFormKey"                     VARCHAR(36),
+    "MedClassKey"                       VARCHAR(36),
+    "MedItemTypeInternalCode"           VARCHAR(10),
+    "MinimumDoseAmount"                 NUMERIC(14, 4),
+    "MaximumDoseAmount"                 NUMERIC(14, 4),
+    "DoseUOMKey"                        VARCHAR(36),
+    "FirstSnapshotFlag"                 BOOLEAN,      -- NOT NULL,
+    "LastModifiedActorKey"              VARCHAR(36),
+    "LastModifiedUTCDateTime"           DATETIME,     -- NOT NULL,
+    "LastModifiedBinaryValue"           VARBINARY,    -- NOT NULL,
+    PRIMARY KEY ("MedItemSnapshotKey")
+);
+

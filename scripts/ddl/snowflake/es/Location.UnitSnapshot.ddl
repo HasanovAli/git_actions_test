@@ -1,0 +1,31 @@
+-- TABLE NAME - Location.UnitSnapshot
+CREATE OR REPLACE TABLE "Location"."UnitSnapshot"
+(
+    "UnitSnapshotKey"                               VARCHAR(36), -- NOT NULL,
+    "UnitKey"                                       VARCHAR(36), -- NOT NULL,
+    "StartUTCDateTime"                              DATETIME,    -- NOT NULL,
+    "StartLocalDateTime"                            DATETIME,    -- NOT NULL,
+    "EndUTCDateTime"                                DATETIME,
+    "EndLocalDateTime"                              DATETIME,
+    "FacilityKey"                                   VARCHAR(36), -- NOT NULL,
+    "UnitName"                                      VARCHAR(50), -- NOT NULL,
+    "DescriptionText"                               VARCHAR(100),
+    "AutoDischargeModeInternalCode"                 VARCHAR(10),
+    "AutoDischargeDurationAmount"                   INTEGER,
+    "AlternateAutoDischargeDurationAmount"          INTEGER,
+    "ShowPreadmissionFlag"                          BOOLEAN,     -- NOT NULL,
+    "ShowRecurringAdmissionFlag"                    BOOLEAN,     -- NOT NULL,
+    "PreadmissionLeadDurationAmount"                INTEGER,
+    "PreadmissionProlongedInactivityDurationAmount" INTEGER,
+    "AdmissionProlongedInactivityDurationAmount"    INTEGER,
+    "DischargeDelayDurationAmount"                  INTEGER,
+    "TransferDelayDurationAmount"                   INTEGER,
+    "OMNLNoticePrinterName"                         VARCHAR(260),
+    "LongTermCareFlag"                              BOOLEAN,     -- NOT NULL,
+    "DeleteFlag"                                    BOOLEAN,     -- NOT NULL,
+    "FirstSnapshotFlag"                             BOOLEAN,     -- NOT NULL,
+    "LastModifiedActorKey"                          VARCHAR(36),
+    "LastModifiedUTCDateTime"                       DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"                       VARBINARY,   -- NOT NULL,
+    PRIMARY KEY ("UnitSnapshotKey")
+);

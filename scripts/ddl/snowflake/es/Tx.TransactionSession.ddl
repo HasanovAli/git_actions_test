@@ -1,0 +1,31 @@
+-- TABLE NAME - Tx.TransactionSession
+CREATE OR REPLACE TABLE "Tx"."TransactionSession"
+(
+    "TransactionSessionKey"              VARCHAR(36), -- NOT NULL,
+    "SequenceNumber"                     INTEGER,     -- NOT NULL,
+    "TransactionSessionTypeInternalCode" VARCHAR(10), -- NOT NULL,
+    "SessionStartUTCDateTime"            DATETIME,    -- NOT NULL,
+    "SessionStartLocalDateTime"          DATETIME,    -- NOT NULL,
+    "SessionEndUTCDateTime"              DATETIME,
+    "SessionEndLocalDateTime"            DATETIME,
+    "AbnormalEndFlag"                    BOOLEAN,     -- NOT NULL,
+    "UserAccountKey"                     VARCHAR(36), -- NOT NULL,
+    "UserAccountSnapshotKey"             VARCHAR(36), -- NOT NULL,
+    "FacilityKey"                        VARCHAR(36), -- NOT NULL,
+    "FacilitySnapshotKey"                VARCHAR(36), -- NOT NULL,
+    "DispensingDeviceKey"                VARCHAR(36),
+    "DispensingDeviceSnapshotKey"        VARCHAR(36),
+    "FirstRecoveryAttemptUTCDateTime"    DATETIME,
+    "FirstRecoveryAttemptLocalDateTime"  DATETIME,
+    "LastRecoveryAttemptUTCDateTime"     DATETIME,
+    "LastRecoveryAttemptLocalDateTime"   DATETIME,
+    "UnrecoveredTransactionFlag"         BOOLEAN,     -- NOT NULL,
+    "RecoveryDataRecordQuantity"         INTEGER,
+    "DoNotSendOutboundFlag"              BOOLEAN,     -- NOT NULL,
+    "MobileFlag"                         BOOLEAN,     -- NOT NULL,
+    "ItemTransactionRecordQuantity"      INTEGER,
+    "LastModifiedDispensingDeviceKey"    VARCHAR(36),
+    "LastModifiedUTCDateTime"            DATETIME,    -- NOT NULL,
+    "LastModifiedBinaryValue"            VARBINARY,   -- NOT NULL,
+    PRIMARY KEY ("TransactionSessionKey")
+);
