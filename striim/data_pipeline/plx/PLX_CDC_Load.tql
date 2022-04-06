@@ -1,0 +1,49 @@
+
+CREATE APPLICATION PLX_CDC_Load USE EXCEPTIONSTORE TTL : '7d' ;
+
+CREATE FLOW PLX_CDC_Load_SourceFlow;
+
+CREATE SOURCE PLX_CDC_Load_SQLServerCDC USING Global.MSSqlReader ( 
+  TransactionSupport: false, 
+  Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
+  FetchTransactionMetadata: false, 
+  Compression: false, 
+  Tables: '"dbo"."BatchDetail";"dbo"."BatchHeader";"dbo"."Bin";"dbo"."Department";"dbo"."DeptFormulary";"dbo"."DeptTranPriorityXref";"dbo"."ExternalIsa";"dbo"."ExternalIsaFormulary";"dbo"."ExternalSystemTransactionData";"dbo"."Facility";"dbo"."Formulary";"dbo"."HoldReason";"dbo"."InvoiceDetail";"dbo"."ISA";"dbo"."LastParLevelForExternalIsa";"dbo"."LatestCostHistory";"dbo"."Location";"dbo"."NDCMaster";"dbo"."PhysicalInventoryHistory";"dbo"."PrintLabel";"dbo"."PrintLabelXref";"dbo"."Rack";"dbo"."RemoteOrderDetail";"dbo"."ReplacementCostHistory";"dbo"."Shelf";"dbo"."Slot";"dbo"."SystemSource";"dbo"."TranPriority";"dbo"."TranQueue";"dbo"."TranQueueHist"', 
+  connectionRetryPolicy: 'timeOut=30, retryInterval=30, maxRetries=3', 
+  Password_encrypted: 'true', 
+  Fetchsize: 0, 
+  ConnectionPoolSize: 10, 
+  StartPosition: 'EOF', 
+  Username: 'poc_user', 
+  cdcRoleName: 'STRIIM_READER', 
+  DatabaseName: 'pharmogistics', 
+  FilterTransactionBoundaries: true, 
+  ConnectionURL: 'jdbc:sqlserver://10.160.188.163:1433;DatabaseName=pharmogistics', 
+  SendBeforeImage: true, 
+  AutoDisableTableCDC: false ) 
+OUTPUT TO PLX_CDC_Load_OutputStream;
+
+END FLOW PLX_CDC_Load_SourceFlow;
+
+CREATE TARGET Snowflake_PLX_CDC_Load_Target USING Global.SnowflakeWriter ( 
+  password_encrypted: 'true', 
+  s3SecretAccessKey: '', 
+  azureContainerName: 'striim-snowflake-container', 
+  CDDLAction: 'Process', 
+  optimizedMerge: 'false', 
+  password: 'Ulj+zHFpp8dnd6OIc+yePw==', 
+  columnDelimiter: '|', 
+  s3Region: 'us-west-1', 
+  appendOnly: 'false', 
+  tables: 'dbo.TranQueue,"CDC_STRIIM_DB"."dbo"."TranQueue";dbo.TranQueueHist,"CDC_STRIIM_DB"."dbo"."TranQueueHist";dbo.HoldReason,"CDC_STRIIM_DB"."dbo"."HoldReason";dbo.ReplacementCostHistory,"CDC_STRIIM_DB"."dbo"."ReplacementCostHistory";dbo.LatestCostHistory,"CDC_STRIIM_DB"."dbo"."LatestCostHistory";dbo.Location,"CDC_STRIIM_DB"."dbo"."Location";dbo.Formulary,"CDC_STRIIM_DB"."dbo"."Formulary";dbo.RemoteOrderDetail,"CDC_STRIIM_DB"."dbo"."RemoteOrderDetail";dbo.InvoiceDetail,"CDC_STRIIM_DB"."dbo"."InvoiceDetail";dbo.DeptFormulary,"CDC_STRIIM_DB"."dbo"."DeptFormulary";dbo.NDCMaster,"CDC_STRIIM_DB"."dbo"."NDCMaster";dbo.PrintLabel,"CDC_STRIIM_DB"."dbo"."PrintLabel";dbo.PrintLabelXref,"CDC_STRIIM_DB"."dbo"."PrintLabelXref";dbo.SystemSource,"CDC_STRIIM_DB"."dbo"."SystemSource";dbo.BatchHeader,"CDC_STRIIM_DB"."dbo"."BatchHeader";dbo.DeptTranPriorityXref,"CDC_STRIIM_DB"."dbo"."DeptTranPriorityXref";dbo.TranPriority,"CDC_STRIIM_DB"."dbo"."TranPriority";dbo.BatchDetail,"CDC_STRIIM_DB"."dbo"."BatchDetail";dbo.ExternalSystemTransactionData,"CDC_STRIIM_DB"."dbo"."ExternalSystemTransactionData";dbo.Facility,"CDC_STRIIM_DB"."dbo"."Facility";dbo.Department,"CDC_STRIIM_DB"."dbo"."Department";dbo.ISA,"CDC_STRIIM_DB"."dbo"."ISA";dbo.Rack,"CDC_STRIIM_DB"."dbo"."Rack";dbo.Shelf,"CDC_STRIIM_DB"."dbo"."Shelf";dbo.Bin,"CDC_STRIIM_DB"."dbo"."Bin";dbo.Slot,"CDC_STRIIM_DB"."dbo"."Slot";dbo.ExternalIsa,"CDC_STRIIM_DB"."dbo"."ExternalIsa";dbo.ExternalIsaFormulary,"CDC_STRIIM_DB"."dbo"."ExternalIsaFormulary";dbo.LastParLevelForExternalIsa,"CDC_STRIIM_DB"."dbo"."LastParLevelForExternalIsa";dbo.PhysicalInventoryHistory,"CDC_STRIIM_DB"."dbo"."PhysicalInventoryHistory;', 
+  connectionUrl: 'jdbc:snowflake://wj01378.west-us-2.azure.snowflakecomputing.com/?db=CDC_STRIIM_DB&schema=dbo&warehouse=CDC_STRIIM_WH&role=SG-STS-NRT-DEV-FG-DEV-CONTRIBUTOR', 
+  externalStageType: 'Local', 
+  username: 'softserve', 
+  azureAccountAccessKey: '', 
+  uploadPolicy: 'eventcount:1000,interval:5s', 
+  fileFormatOptions: 'null_if = \"\"', 
+  s3BucketName: 'striim-snowflake-bucket' ) 
+INPUT FROM PLX_CDC_Load_OutputStream;
+
+END APPLICATION PLX_CDC_Load;
+
