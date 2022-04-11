@@ -1,5 +1,5 @@
 
-CREATE APPLICATION PLX_Initial_Load;
+CREATE APPLICATION PLX_Initial_Load AUTORESUME MAXRETRIES 60 RETRYINTERVAL 60;
 
 CREATE FLOW PLX_Initial_Load_SourceFlow;
 
@@ -7,29 +7,29 @@ CREATE OR REPLACE SOURCE PLX_Initial_Load_DBSource USING Global.DatabaseReader (
   Tables: 'pharmogistics.dbo.TranQueue;pharmogistics.dbo.TranQueueHist;pharmogistics.dbo.HoldReason;pharmogistics.dbo.ReplacementCostHistory;pharmogistics.dbo.LatestCostHistory;pharmogistics.dbo.Location;pharmogistics.dbo.Formulary;pharmogistics.dbo.RemoteOrderDetail;pharmogistics.dbo.InvoiceDetail;pharmogistics.dbo.DeptFormulary;pharmogistics.dbo.NDCMaster;pharmogistics.dbo.PrintLabel;pharmogistics.dbo.PrintLabelXref;pharmogistics.dbo.SystemSource;pharmogistics.dbo.BatchHeader;pharmogistics.dbo.DeptTranPriorityXref;pharmogistics.dbo.TranPriority;pharmogistics.dbo.BatchDetail;pharmogistics.dbo.ExternalSystemTransactionData;pharmogistics.dbo.Facility;pharmogistics.dbo.Department;pharmogistics.dbo.ISA;pharmogistics.dbo.Rack;pharmogistics.dbo.Shelf;pharmogistics.dbo.Bin;pharmogistics.dbo.Slot;pharmogistics.dbo.ExternalIsa;pharmogistics.dbo.ExternalIsaFormulary;pharmogistics.dbo.LastParLevelForExternalIsa;pharmogistics.dbo.PhysicalInventoryHistory', 
   Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
   Username: 'poc_user', 
+  QuiesceOnILCompletion: true, 
+  adapterName: 'DatabaseReader', 
   FetchSize: 10000, 
+  ConnectionURL: 'jdbc:sqlserver://10.160.188.167:1433;DatabaseName=pharmogistics', 
   Password_encrypted: 'true', 
-  QuiesceOnILCompletion: 'true', 
-  DatabaseProviderType: 'SQLSERVER', 
-  ConnectionURL: 'jdbc:sqlserver://10.160.188.163:1433;DatabaseName=pharmogistics' ) 
+  DatabaseProviderType: 'SQLServer' ) 
 OUTPUT TO PLX_Initial_Load_OutputStream;
 
 CREATE OR REPLACE TARGET PLX_Initial_Load_Destination USING Global.SnowflakeWriter ( 
   password_encrypted: 'true', 
-  s3SecretAccessKey: '', 
-  azureContainerName: 'striim-snowflake-container', 
+  tables: '"pharmogistics"."dbo"."TranQueue","dbo"."TranQueue";"pharmogistics"."dbo"."TranQueueHist","dbo"."TranQueueHist";"pharmogistics"."dbo"."HoldReason","dbo"."HoldReason";"pharmogistics"."dbo"."ReplacementCostHistory","dbo"."ReplacementCostHistory";"pharmogistics"."dbo"."LatestCostHistory","dbo"."LatestCostHistory";"pharmogistics"."dbo"."Location","dbo"."Location";"pharmogistics"."dbo"."Formulary","dbo"."Formulary";"pharmogistics"."dbo"."RemoteOrderDetail","dbo"."RemoteOrderDetail";"pharmogistics"."dbo"."InvoiceDetail","dbo"."InvoiceDetail";"pharmogistics"."dbo"."DeptFormulary","dbo"."DeptFormulary";"pharmogistics"."dbo"."NDCMaster","dbo"."NDCMaster";"pharmogistics"."dbo"."PrintLabel","dbo"."PrintLabel";"pharmogistics"."dbo"."PrintLabelXref","dbo"."PrintLabelXref";"pharmogistics"."dbo"."SystemSource","dbo"."SystemSource";"pharmogistics"."dbo"."BatchHeader","dbo"."BatchHeader";"pharmogistics"."dbo"."DeptTranPriorityXref","dbo"."DeptTranPriorityXref";"pharmogistics"."dbo"."TranPriority","dbo"."TranPriority";"pharmogistics"."dbo"."BatchDetail","dbo"."BatchDetail";"pharmogistics"."dbo"."ExternalSystemTransactionData","dbo"."ExternalSystemTransactionData";"pharmogistics"."dbo"."Facility","dbo"."Facility";"pharmogistics"."dbo"."Department","dbo"."Department";"pharmogistics"."dbo"."ISA","dbo"."ISA";"pharmogistics"."dbo"."Rack","dbo"."Rack";"pharmogistics"."dbo"."Shelf","dbo"."Shelf";"pharmogistics"."dbo"."Bin","dbo"."Bin";"pharmogistics"."dbo"."Slot","dbo"."Slot";"pharmogistics"."dbo"."ExternalIsa","dbo"."ExternalIsa";"pharmogistics"."dbo"."ExternalIsaFormulary","dbo"."ExternalIsaFormulary";"pharmogistics"."dbo"."LastParLevelForExternalIsa","dbo"."LastParLevelForExternalIsa";"pharmogistics"."dbo"."PhysicalInventoryHistory","dbo"."PhysicalInventoryHistory"', 
   CDDLAction: 'Process', 
+  azureContainerName: 'striim-snowflake-container', 
   optimizedMerge: 'false', 
   password: 'Ulj+zHFpp8dnd6OIc+yePw==', 
   columnDelimiter: '|', 
   s3Region: 'us-west-1', 
   appendOnly: 'false', 
-  tables: '"pharmogistics"."dbo"."TranQueue","dbo"."TranQueue";"pharmogistics"."dbo"."TranQueueHist","dbo"."TranQueueHist";"pharmogistics"."dbo"."HoldReason","dbo"."HoldReason";"pharmogistics"."dbo"."ReplacementCostHistory","dbo"."ReplacementCostHistory";"pharmogistics"."dbo"."LatestCostHistory","dbo"."LatestCostHistory";"pharmogistics"."dbo"."Location","dbo"."Location";"pharmogistics"."dbo"."Formulary","dbo"."Formulary";"pharmogistics"."dbo"."RemoteOrderDetail","dbo"."RemoteOrderDetail";"pharmogistics"."dbo"."InvoiceDetail","dbo"."InvoiceDetail";"pharmogistics"."dbo"."DeptFormulary","dbo"."DeptFormulary";"pharmogistics"."dbo"."NDCMaster","dbo"."NDCMaster";"pharmogistics"."dbo"."PrintLabel","dbo"."PrintLabel";"pharmogistics"."dbo"."PrintLabelXref","dbo"."PrintLabelXref";"pharmogistics"."dbo"."SystemSource","dbo"."SystemSource";"pharmogistics"."dbo"."BatchHeader","dbo"."BatchHeader";"pharmogistics"."dbo"."DeptTranPriorityXref","dbo"."DeptTranPriorityXref";"pharmogistics"."dbo"."TranPriority","dbo"."TranPriority";"pharmogistics"."dbo"."BatchDetail","dbo"."BatchDetail";"pharmogistics"."dbo"."ExternalSystemTransactionData","dbo"."ExternalSystemTransactionData";"pharmogistics"."dbo"."Facility","dbo"."Facility";"pharmogistics"."dbo"."Department","dbo"."Department";"pharmogistics"."dbo"."ISA","dbo"."ISA";"pharmogistics"."dbo"."Rack","dbo"."Rack";"pharmogistics"."dbo"."Shelf","dbo"."Shelf";"pharmogistics"."dbo"."Bin","dbo"."Bin";"pharmogistics"."dbo"."Slot","dbo"."Slot";"pharmogistics"."dbo"."ExternalIsa","dbo"."ExternalIsa";"pharmogistics"."dbo"."ExternalIsaFormulary","dbo"."ExternalIsaFormulary";"pharmogistics"."dbo"."LastParLevelForExternalIsa","dbo"."LastParLevelForExternalIsa";"pharmogistics"."dbo"."PhysicalInventoryHistory","dbo"."PhysicalInventoryHistory', 
   uploadPolicy: 'eventcount:10000,interval:5m', 
   connectionUrl: 'jdbc:snowflake://wj01378.west-us-2.azure.snowflakecomputing.com/?db=CDC_STRIIM_DB&schema=dbo&warehouse=CDC_STRIIM_WH&role=SG-STS-NRT-DEV-FG-DEV-CONTRIBUTOR', 
   externalStageType: 'Local', 
+  adapterName: 'SnowflakeWriter', 
   username: 'softserve', 
-  azureAccountAccessKey: '', 
   fileFormatOptions: 'null_if = \"\"', 
   s3BucketName: 'striim-snowflake-bucket' ) 
 INPUT FROM PLX_Initial_Load_OutputStream;
