@@ -33,7 +33,7 @@ CREATE OR REPLACE TARGET Snowflake_ES_CDC_Load_Target USING Global.SnowflakeWrit
   password: 'Ulj+zHFpp8dnd6OIc+yePw==', 
   columnDelimiter: '|', 
   s3Region: 'us-west-1', 
-  connectionUrl: 'jdbc:snowflake://wj01378.west-us-2.azure.snowflakecomputing.com/?db=CDC_STRIIM_DB&schema=PUBLIC&warehouse=CDC_STRIIM_WH&role=SG-STS-NRT-DEV-FG-DEV-CONTRIBUTOR', 
+  connectionUrl: 'jdbc:snowflake://wj01378.west-us-2.azure.snowflakecomputing.com/?db=CDC_STRIIM_DB&schema=PUBLIC&warehouse=CDC_STRIIM_WH&role=SG-STS-NRT-DEV-FG-DEV-CONTRIBUTOR&CLIENT_SESSION_KEEP_ALIVE=TRUE',
   appendOnly: 'false', 
   externalStageType: 'Local', 
   adapterName: 'SnowflakeWriter', 
