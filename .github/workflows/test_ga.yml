@@ -34,5 +34,7 @@ jobs:
         run: |
           cd ~
           ls -la
+          cd ~/bin
+          snowsql -v
         
       
