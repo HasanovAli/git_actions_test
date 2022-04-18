@@ -23,6 +23,9 @@ jobs:
         
       - name: Check copied files
         run: ls -la
-        
-      - run: cat README.md
+      
+      - name: Install SnowSQL
+        run: |
+          curl -O https://sfc-repo.azure.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
+          ls -la
           
