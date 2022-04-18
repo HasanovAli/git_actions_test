@@ -33,6 +33,6 @@ jobs:
       - name: Check SnowSQL
         run: |
           cd ~
-          ls - la
+          ls -la
         
       
