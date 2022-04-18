@@ -24,13 +24,10 @@ jobs:
       - name: Check copied files
         run: ls -la
       
- #     - name: Install SnowSQL
-  #      run: |
-   #       curl -O https://sfc-repo.azure.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
-    #      SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.21-linux_x86_64.bash
-     #     snowsql -v
-      
-      - name: Attempt 2
+      - name: Install SnowSQL
         run: |
-          rpm -i snowsql-1.2.9-linux_x86_64.bash
+          curl -O https://sfc-repo.azure.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.9-linux_x86_64.bash
+          SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.9-linux_x86_64.bash
+          ls -la
           snowsql -v
+      
