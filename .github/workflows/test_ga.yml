@@ -24,4 +24,5 @@ jobs:
       - name: Check copied files
         run: ls -la
         
+      - run: cat README.md
           
