@@ -48,17 +48,10 @@ jobs:
         run: which snowsql
       - name: Configure SF
         run: |
-          cd ~
+          cd /usr/bin
           pwd
           ls -la
-          echo "*******************************************************"
-          cd /etc/
-          pwd
-          ls -la
-          echo "*******************************************************"
-          cd /usr/local/etc/
-          pwd
-          ls -la
+
           
           
           
