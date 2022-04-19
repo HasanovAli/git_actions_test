@@ -48,8 +48,15 @@ jobs:
         run: which snowsql
       - name: RUN SNOWSQL
         run: |
+          list_of_files=
+          search_dir=/home/runner/work/git_actions_test/git_actions_test/DDLs
+          for entry in "$search_dir"/*
+          do
+            list_of_files="$list_of_files -f $entry"
+          done
+          echo $list_of_files
           export SNOWSQL_PWD=7434673Sn 
-          snowsql -a vw86460.east-us-2.azure -u alijkee -d STRIIM -s PUBLIC -r ACCOUNTADMIN -w COMPUTE_WH -D password=$SNOWSQL_PWD
+          snowsql $list_of_files -a vw86460.east-us-2.azure -u alijkee -d STRIIM -s PUBLIC -r ACCOUNTADMIN -w COMPUTE_WH -D password=$SNOWSQL_PWD
 
           
           
