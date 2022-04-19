@@ -29,13 +29,16 @@ jobs:
     #      curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
      #     SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.21-linux_x86_64.bash
       #    ls -la
+      - name: Install Alien
+        run: sudo apt-get install alien
       - name: Install rpm file
-        run: |
-          sudo apt-get install alien
-          curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowflake-snowsql-1.2.21-1.x86_64.rpm
-          alien --to-deb snowflake-snowsql-1.2.21-1.x86_64.rpm
-          ls -la
-          dpkg -i snowflake-snowsql-1.2.21-1.x86_64.deb
+        run: curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowflake-snowsql-1.2.21-1.x86_64.rpm
+      - name: Convert rpm to deb    
+        run: sudo alien --to-deb snowflake-snowsql-1.2.21-1.x86_64.rpm
+      - name: Check files
+        run: ls -la
+      - name: Install SnowSQL
+        run: sudo dpkg -i snowflake-snowsql-1.2.21-1.x86_64.deb
           
       - name: Restart Terminal
         run: exec bash -l
