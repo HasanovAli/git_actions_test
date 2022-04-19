@@ -24,12 +24,16 @@ jobs:
       - name: Check copied files
         run: ls -la
       
-      - name: Install SnowSQL
+  #    - name: Install SnowSQL
+   #     run: |
+    #      curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
+     #     SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.21-linux_x86_64.bash
+      #    ls -la
+      - name: Install rpm file
         run: |
-          curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
-          SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.21-linux_x86_64.bash
-          ls -la
-          
+          curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowflake-snowsql-1.2.21-1.x86_64.rpm
+          ls-la
+          rpm -i snowflake-snowsql-1.2.21-1.x86_64.rpm
           
       - name: Restart Terminal
         run: exec bash -l
