@@ -44,15 +44,14 @@ jobs:
           pwd
           ls -la
           snowsql -v
-          
-      - name: Restart Terminal
-        run: exec bash -l
-      
-      - name: Check SnowSQL
+      - name: Configure SF
         run: |
-          cd ~
+          cd ~/.snowsql
           ls -la
-          cd ~/bin
-          snowsql -v
+          cat config
+          
+          
+          
+          
+          
         
-      
