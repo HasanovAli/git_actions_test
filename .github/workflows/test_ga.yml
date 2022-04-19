@@ -44,15 +44,20 @@ jobs:
           pwd
           ls -la
           snowsql -v
+      - name: Find SnowSQL PATH
+        run: which snowsql
       - name: Configure SF
         run: |
           cd ~
+          pwd
           ls -la
           echo "*******************************************************"
           cd /etc/
+          pwd
           ls -la
           echo "*******************************************************"
           cd /usr/local/etc/
+          pwd
           ls -la
           
           
