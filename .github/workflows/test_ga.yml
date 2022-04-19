@@ -31,8 +31,8 @@ jobs:
           ls -la
           
           
-      - name: New Terminal
-        run: reboot
+      - name: Restart Terminal
+        run: exec bash -l
       
       - name: Check SnowSQL
         run: |
