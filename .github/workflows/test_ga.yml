@@ -38,7 +38,7 @@ jobs:
       - name: Check files
         run: ls -la
       - name: Install SnowSQL
-        run: sudo dpkg -i snowflake-snowsql-1.2.21-1.x86_64.deb
+        run: sudo dpkg -i snowflake-snowsql_1.2.21-2_amd64.deb
       - name: Check files
         run: |
           pwd
