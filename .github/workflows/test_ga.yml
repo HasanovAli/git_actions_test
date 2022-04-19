@@ -32,7 +32,7 @@ jobs:
           
           
       - name: New Terminal
-        run: gnome-terminal
+        run: xterm
       
       - name: Check SnowSQL
         run: |
