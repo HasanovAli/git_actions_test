@@ -46,16 +46,10 @@ jobs:
           snowsql -v
       - name: Find SnowSQL PATH
         run: which snowsql
-      - name: Configure SF
+      - name: RUN SNOWSQL
         run: |
-          cd /usr/bin
-          pwd
-          ls -la
-          echo "and *******************************************************"
-          cd /usr
-          pwd
-          ls -la
-          echo "and *******************************************************"
+          export SNOWSQL_PWD=9NYm84Rg8xuP 
+          snowsql -a wj01378.west-us-2.azure -u softserve -d CDC_SYSTEM_DB -s PUBLIC -r SG-STS-NRT-DEV-FG-DEV-CONTRIBUTOR -w CDC_SYSTEM_WH -D password=$SNOWSQL_PWD
 
 
           
