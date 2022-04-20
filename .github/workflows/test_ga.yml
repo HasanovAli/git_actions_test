@@ -62,9 +62,14 @@ jobs:
           else
             echo "FIRST RELEASE"
             git diff --name-only latest_release_branch..previouse_release_branch >> changed_and_new_files.txt 
-            for line in (changed_and_new_files.txt)
+            file="changed_and_new_files.txt"
+            changed_and_new_files=$(cat $file)
+            for line in $changed_and_new_files
             do
-              list_of_files="$list_of_files -f ${line##*/}"
+              if [[ $line == *".ddl"* ]]; 
+              then
+                list_of_files="$list_of_files -f ${line##*/}"
+              fi
             done
           fi 
           
