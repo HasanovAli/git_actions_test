@@ -60,15 +60,16 @@ jobs:
           echo " CHECK 1 *********.    $latest_release_branch CHECK 2*************** $previouse_release_branch"
           if [[ $latest_release_branch == $previouse_release_branch ]]
           then
-            echo "CHECK 3.1.1 ********* NOT FIRST RELEASE"
+            echo "CHECK 3.1.1 ********* FIRST RELEASE"
             search_dir=/home/runner/work/git_actions_test/git_actions_test/DDLs
             for entry in "$search_dir"/*
             do
               list_of_files="$list_of_files -f $entry"
             done
+            echo $list_of_files
             echo "CHECK 3.1.2 *********"
           else
-            echo "CHECK 3.2.1 ********* FIRST RELEASE"
+            echo "CHECK 3.2.1 ********* NOT FIRST RELEASE"
             echo "git diff --name-only $latest_release_branch..$previouse_release_branch"
             git diff --name-only $latest_release_branch..$previouse_release_branch >> changed_and_new_files.txt 
             file="changed_and_new_files.txt"
@@ -83,7 +84,7 @@ jobs:
             echo "CHECK 3.2.2 *********"
           fi 
           
-          echo "echo "CHECK 4 ********* $list_of_files"
+          echo "CHECK 4 ********* $list_of_files"
           
           export SNOWSQL_PWD=7434673Sn 
           snowsql $list_of_files -a vw86460.east-us-2.azure -u alijkee -d STRIIM -s PUBLIC -r ACCOUNTADMIN -w COMPUTE_WH -D password=$SNOWSQL_PWD
