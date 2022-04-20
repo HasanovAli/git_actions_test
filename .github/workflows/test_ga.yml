@@ -58,7 +58,7 @@ jobs:
           previouse_release_branch=${previouse_release_branch##*'* '}
           echo ${previouse_release_branch}
           echo " CHECK 1 *********.    $latest_release_branch CHECK 2*************** $previouse_release_branch"
-          if [$latest_release_branch -eq $previouse_release_branch]
+          if [$latest_release_branch == $previouse_release_branch]
           then
             echo "CHECK 3.1.1 ********* NOT FIRST RELEASE"
             search_dir=/home/runner/work/git_actions_test/git_actions_test/DDLs
