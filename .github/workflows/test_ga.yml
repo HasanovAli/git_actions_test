@@ -1,25 +1,19 @@
-# This is a basic workflow to help you get started with Actions
-
 name: sf_deployment
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches:
+      - 'release/**'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   ddl_deploy:
-    # The type of runner that the job will run on
     runs-on: ubuntu-18.04
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
       - name: Copy files
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
         
       - name: Check copied files
         run: ls -la
@@ -29,32 +23,48 @@ jobs:
     #      curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
      #     SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.21-linux_x86_64.bash
       #    ls -la
+      
       - name: Install Alien
         run: sudo apt-get install alien
+        
       - name: Install rpm file
         run: curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowflake-snowsql-1.2.21-1.x86_64.rpm
+      
       - name: Convert rpm to deb    
         run: sudo alien --to-deb snowflake-snowsql-1.2.21-1.x86_64.rpm
+     
       - name: Check files
         run: ls -la
+     
       - name: Install SnowSQL
         run: sudo dpkg -i snowflake-snowsql_1.2.21-2_amd64.deb
+      
       - name: Check files and SnowSQL version
         run: |
           pwd
           ls -la
           snowsql -v
-      - name: Find SnowSQL PATH
-        run: which snowsql
       - name: RUN SNOWSQL
         run: |
           list_of_files=
-          search_dir=/home/runner/work/git_actions_test/git_actions_test/DDLs
-          for entry in "$search_dir"/*
-          do
-            list_of_files="$list_of_files -f $entry"
-          done
-          echo $list_of_files
+          touch changed_and_new_files.txt
+          latest_release_branch=$(git branch | grep release | tail -1)
+          previouse_release_branch=$(git branch | grep release | tail -2 | head -n 1)
+          if [$latest_release_branch -eq $previouse_release_branch]
+          then
+            search_dir=/home/runner/work/git_actions_test/git_actions_test/DDLs
+            for entry in "$search_dir"/*
+            do
+              list_of_files="$list_of_files -f $entry"
+            done
+          else
+            git diff --name-only latest_release_branch..previouse_release_branch >> changed_and_new_files.txt 
+            for line in (changed_and_new_files.txt)
+            do
+              list_of_files="$list_of_files -f ${line##*/}"
+            done
+          fi 
+          
           export SNOWSQL_PWD=7434673Sn 
           snowsql $list_of_files -a vw86460.east-us-2.azure -u alijkee -d STRIIM -s PUBLIC -r ACCOUNTADMIN -w COMPUTE_WH -D password=$SNOWSQL_PWD
 
