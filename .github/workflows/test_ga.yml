@@ -3,7 +3,9 @@ name: sf_deployment
 on:
   push:
     branches:
-      - 'release/**'
+      - main
+    paths:
+      - '**.ddl'
 
 jobs:
   ddl_deploy:
@@ -17,12 +19,6 @@ jobs:
         
       - name: Check copied files
         run: ls -la
-      
-  #    - name: Install SnowSQL
-   #     run: |
-    #      curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
-     #     SNOWSQL_DEST=~/bin SNOWSQL_LOGIN_SHELL=~/.profile bash snowsql-1.2.21-linux_x86_64.bash
-      #    ls -la
       
       - name: Install Alien
         run: sudo apt-get install alien
@@ -44,35 +40,23 @@ jobs:
           pwd
           ls -la
           snowsql -v
-      - name: RUN SNOWSQL
+      - name: Get list of changed or new files
         run: |
           list_of_files=
           touch changed_and_new_files.txt
-          echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          echo $(git branch | grep release)
           latest_release_branch=$(git branch | grep release | tail -1)
           latest_release_branch=${latest_release_branch##*'* '}
-          echo "==================="
-          echo ${latest_release_branch}
-          
           previouse_release_branch=$(git branch | grep release | tail -2 | head -n 1)
-          echo "==================="
           previouse_release_branch=${previouse_release_branch##*'* '}
-          echo ${previouse_release_branch}
-          echo " CHECK 1 *********.    $latest_release_branch CHECK 2*************** $previouse_release_branch"
+          
           if [[ $latest_release_branch == $previouse_release_branch ]]
           then
-            echo "CHECK 3.1.1 ********* FIRST RELEASE"
             search_dir=/home/runner/work/git_actions_test/git_actions_test/DDLs
             for entry in "$search_dir"/*
             do
               list_of_files="$list_of_files -f $entry"
             done
-            echo $list_of_files
-            echo "CHECK 3.1.2 *********"
           else
-            echo "CHECK 3.2.1 ********* NOT FIRST RELEASE"
-            echo "git diff --name-only $latest_release_branch..$previouse_release_branch"
             git diff --name-only $latest_release_branch..$previouse_release_branch >> changed_and_new_files.txt 
             file="changed_and_new_files.txt"
             changed_and_new_files=$(cat $file)
@@ -83,11 +67,11 @@ jobs:
                 list_of_files="$list_of_files -f ${line##*/}"
               fi
             done
-            echo "CHECK 3.2.2 *********"
-          fi 
+          fi
           
-          echo "CHECK 4 ********* $list_of_files"
-          
+      - name: RUN SnowSQL to create tables
+      
+        run: |
           export SNOWSQL_PWD=7434673Sn 
           snowsql $list_of_files -a vw86460.east-us-2.azure -u alijkee -d STRIIM -s PUBLIC -r ACCOUNTADMIN -w COMPUTE_WH -D password=$SNOWSQL_PWD
 
