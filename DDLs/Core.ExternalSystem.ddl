@@ -1,5 +1,5 @@
 -- TABLE NAME - Core.ExternalSystem
-CREATE OR REPLACE TABLE "Core"."ExternalSystem"
+CREATE OR REPLACE TABLE "ExternalSystem"
 (
     "ExternalSystemKey"       VARCHAR(36), -- NOT NULL,
     "LastModifiedUTCDateTime" DATETIME,    -- NOT NULL,
