@@ -50,17 +50,18 @@ jobs:
           touch changed_and_new_files.txt
           latest_release_branch=$(git branch | grep release | tail -1)
           previouse_release_branch=$(git branch | grep release | tail -2 | head -n 1)
-          echo $latest_release_branch $previouse_release_branch
+          echo " CHECK 1 *********.    $latest_release_branch CHECK 2*************** $previouse_release_branch"
           if [$latest_release_branch -eq $previouse_release_branch]
           then
-            echo "NOT FIRST RELEASE"
+            echo "CHECK 3.1.1 ********* NOT FIRST RELEASE"
             search_dir=/home/runner/work/git_actions_test/git_actions_test/DDLs
             for entry in "$search_dir"/*
             do
               list_of_files="$list_of_files -f $entry"
             done
+            echo "CHECK 3.1.2 *********"
           else
-            echo "FIRST RELEASE"
+            echo "CHECK 3.2.1 ********* FIRST RELEASE"
             git diff --name-only $latest_release_branch..$previouse_release_branch >> changed_and_new_files.txt 
             file="changed_and_new_files.txt"
             changed_and_new_files=$(cat $file)
@@ -71,9 +72,10 @@ jobs:
                 list_of_files="$list_of_files -f ${line##*/}"
               fi
             done
+            echo "CHECK 3.2.2 *********"
           fi 
           
-          echo "$list_of_files"
+          echo "echo "CHECK 4 ********* $list_of_files"
           
           export SNOWSQL_PWD=7434673Sn 
           snowsql $list_of_files -a vw86460.east-us-2.azure -u alijkee -d STRIIM -s PUBLIC -r ACCOUNTADMIN -w COMPUTE_WH -D password=$SNOWSQL_PWD
