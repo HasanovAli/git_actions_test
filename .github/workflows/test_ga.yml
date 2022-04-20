@@ -49,12 +49,14 @@ jobs:
           list_of_files=
           touch changed_and_new_files.txt
           latest_release_branch=$(git branch | grep release | tail -1)
+          latest_release_branch=${latest_release_branch##*'* '}
           echo "==================="
-          echo $latest_release_branch
+          echo ${latest_release_branch}
           
           previouse_release_branch=$(git branch | grep release | tail -2 | head -n 1)
           echo "==================="
-          echo $previouse_release_branch
+          previouse_release_branch=${previouse_release_branch##*'* '}
+          echo ${previouse_release_branch}
           echo " CHECK 1 *********.    $latest_release_branch CHECK 2*************** $previouse_release_branch"
           if [$latest_release_branch -eq $previouse_release_branch]
           then
