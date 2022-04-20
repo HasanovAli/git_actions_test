@@ -1,5 +1,5 @@
 -- TABLE NAME - Core.ExternalSystemSnapshot
-CREATE OR REPLACE TABLE "Core"."ExternalSystemSnapshot"
+CREATE OR REPLACE TABLE "ExternalSystemSnapshot"
 (
     "ExternalSystemSnapshotKey"                     VARCHAR(36), -- NOT NULL,
     "ExternalSystemKey"                             VARCHAR(36), -- NOT NULL,
