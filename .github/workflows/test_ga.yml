@@ -49,7 +49,12 @@ jobs:
           list_of_files=
           touch changed_and_new_files.txt
           latest_release_branch=$(git branch | grep release | tail -1)
+          echo "==================="
+          echo $latest_release_branch
+          
           previouse_release_branch=$(git branch | grep release | tail -2 | head -n 1)
+          echo "==================="
+          echo $previouse_release_branch
           echo " CHECK 1 *********.    $latest_release_branch CHECK 2*************** $previouse_release_branch"
           if [$latest_release_branch -eq $previouse_release_branch]
           then
@@ -62,6 +67,7 @@ jobs:
             echo "CHECK 3.1.2 *********"
           else
             echo "CHECK 3.2.1 ********* FIRST RELEASE"
+            echo "git diff --name-only $latest_release_branch..$previouse_release_branch"
             git diff --name-only $latest_release_branch..$previouse_release_branch >> changed_and_new_files.txt 
             file="changed_and_new_files.txt"
             changed_and_new_files=$(cat $file)
