@@ -48,6 +48,8 @@ jobs:
         run: |
           list_of_files=
           touch changed_and_new_files.txt
+          echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          echo $(git branch | grep release)
           latest_release_branch=$(git branch | grep release | tail -1)
           latest_release_branch=${latest_release_branch##*'* '}
           echo "==================="
