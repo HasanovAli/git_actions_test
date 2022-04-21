@@ -1,9 +1,9 @@
 
-CREATE APPLICATION PLX_Initial_Load_multiple_sources_new;
+CREATE APPLICATION PLX_Initial_Load_multiple_sources;
 
-CREATE FLOW PLX_Initial_Load_multiple_sources_new_SourceFlow;
+CREATE FLOW PLX_Initial_Load_multiple_sources_SourceFlow;
 
-CREATE OR REPLACE SOURCE plx_dbo_source_new_2 USING Global.DatabaseReader (
+CREATE OR REPLACE SOURCE plx_dbo_source_2 USING Global.DatabaseReader (
   DatabaseProviderType: 'Default', 
   Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
   Username: 'poc_user', 
@@ -13,9 +13,9 @@ CREATE OR REPLACE SOURCE plx_dbo_source_new_2 USING Global.DatabaseReader (
   ConnectionURL: 'jdbc:sqlserver://10.160.188.167:1433;DatabaseName=pharmogistics', 
   Password_encrypted: 'true', 
   Tables: 'dbo.TranQueue;dbo.HoldReason;dbo.ReplacementCostHistory;dbo.LatestCostHistory;dbo.Location;dbo.Formulary;dbo.RemoteOrderDetail;dbo.PrintLabel;dbo.PrintLabelXref;dbo.SystemSource;dbo.BatchHeader;dbo.DeptTranPriorityXref;dbo.TranPriority;dbo.BatchDetail;dbo.Facility;dbo.Department;dbo.ISA;dbo.Rack;dbo.Shelf;dbo.Bin;dbo.ExternalIsa;dbo.ExternalIsaFormulary;dbo.LastParLevelForExternalIsa;dbo.DeptFormulary;dbo.NDCMaster;dbo.InvoiceDetail' )
-OUTPUT TO PLX_Initial_Load_multiple_sources_new_OutputStream;
+OUTPUT TO PLX_Initial_Load_multiple_sources_OutputStream;
 
-CREATE OR REPLACE SOURCE plx_dbo_source_new_1 USING Global.DatabaseReader (
+CREATE OR REPLACE SOURCE plx_dbo_source_1 USING Global.DatabaseReader (
   Tables: 'dbo.PhysicalInventoryHistory', 
   DatabaseProviderType: 'Default', 
   Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
@@ -25,9 +25,9 @@ CREATE OR REPLACE SOURCE plx_dbo_source_new_1 USING Global.DatabaseReader (
   adapterName: 'DatabaseReader', 
   ConnectionURL: 'jdbc:sqlserver://10.160.188.167:1433;DatabaseName=pharmogistics', 
   Password_encrypted: 'true' ) 
-OUTPUT TO PLX_Initial_Load_multiple_sources_new_OutputStream;
+OUTPUT TO PLX_Initial_Load_multiple_sources_OutputStream;
 
-CREATE OR REPLACE SOURCE plx_dbo_source_new_3 USING Global.DatabaseReader (
+CREATE OR REPLACE SOURCE plx_dbo_source_3 USING Global.DatabaseReader (
   DatabaseProviderType: 'Default', 
   Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
   Username: 'poc_user', 
@@ -37,9 +37,9 @@ CREATE OR REPLACE SOURCE plx_dbo_source_new_3 USING Global.DatabaseReader (
   adapterName: 'DatabaseReader', 
   ConnectionURL: 'jdbc:sqlserver://10.160.188.167:1433;DatabaseName=pharmogistics', 
   Password_encrypted: 'true' ) 
-OUTPUT TO PLX_Initial_Load_multiple_sources_new_OutputStream;
+OUTPUT TO PLX_Initial_Load_multiple_sources_OutputStream;
 
-CREATE OR REPLACE TARGET PLX_Initial_Load_multiple_sources_new_Destination USING Global.SnowflakeWriter (
+CREATE OR REPLACE TARGET PLX_Initial_Load_multiple_sources_Destination USING Global.SnowflakeWriter (
   password_encrypted: 'true', 
   tables: '"pharmogistics"."dbo"."TranQueue","dbo"."TranQueue";"pharmogistics"."dbo"."TranQueueHist","dbo"."TranQueueHist";"pharmogistics"."dbo"."HoldReason","dbo"."HoldReason";"pharmogistics"."dbo"."ReplacementCostHistory","dbo"."ReplacementCostHistory";"pharmogistics"."dbo"."LatestCostHistory","dbo"."LatestCostHistory";"pharmogistics"."dbo"."Location","dbo"."Location";"pharmogistics"."dbo"."Formulary","dbo"."Formulary";"pharmogistics"."dbo"."RemoteOrderDetail","dbo"."RemoteOrderDetail";"pharmogistics"."dbo"."InvoiceDetail","dbo"."InvoiceDetail";"pharmogistics"."dbo"."DeptFormulary","dbo"."DeptFormulary";"pharmogistics"."dbo"."NDCMaster","dbo"."NDCMaster";"pharmogistics"."dbo"."PrintLabel","dbo"."PrintLabel";"pharmogistics"."dbo"."PrintLabelXref","dbo"."PrintLabelXref";"pharmogistics"."dbo"."SystemSource","dbo"."SystemSource";"pharmogistics"."dbo"."BatchHeader","dbo"."BatchHeader";"pharmogistics"."dbo"."DeptTranPriorityXref","dbo"."DeptTranPriorityXref";"pharmogistics"."dbo"."TranPriority","dbo"."TranPriority";"pharmogistics"."dbo"."BatchDetail","dbo"."BatchDetail";"pharmogistics"."dbo"."ExternalSystemTransactionData","dbo"."ExternalSystemTransactionData";"pharmogistics"."dbo"."Facility","dbo"."Facility";"pharmogistics"."dbo"."Department","dbo"."Department";"pharmogistics"."dbo"."ISA","dbo"."ISA";"pharmogistics"."dbo"."Rack","dbo"."Rack";"pharmogistics"."dbo"."Shelf","dbo"."Shelf";"pharmogistics"."dbo"."Bin","dbo"."Bin";"pharmogistics"."dbo"."Slot","dbo"."Slot";"pharmogistics"."dbo"."ExternalIsa","dbo"."ExternalIsa";"pharmogistics"."dbo"."ExternalIsaFormulary","dbo"."ExternalIsaFormulary";"pharmogistics"."dbo"."LastParLevelForExternalIsa","dbo"."LastParLevelForExternalIsa";"pharmogistics"."dbo"."PhysicalInventoryHistory","dbo"."PhysicalInventoryHistory"', 
   CDDLAction: 'Process', 
@@ -57,9 +57,9 @@ CREATE OR REPLACE TARGET PLX_Initial_Load_multiple_sources_new_Destination USING
   username: 'softserve', 
   fileFormatOptions: 'null_if = \"\"', 
   s3BucketName: 'striim-snowflake-bucket' ) 
-INPUT FROM PLX_Initial_Load_multiple_sources_new_OutputStream;
+INPUT FROM PLX_Initial_Load_multiple_sources_OutputStream;
 
-END FLOW PLX_Initial_Load_multiple_sources_new_SourceFlow;
+END FLOW PLX_Initial_Load_multiple_sources_SourceFlow;
 
-END APPLICATION PLX_Initial_Load_multiple_sources_new;
+END APPLICATION PLX_Initial_Load_multiple_sources;
 
