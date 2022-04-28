@@ -3,19 +3,31 @@ CREATE APPLICATION PLX_Initial_Load_multiple_sources;
 
 CREATE FLOW PLX_Initial_Load_multiple_sources_SourceFlow;
 
-CREATE OR REPLACE SOURCE plx_dbo_source_2 USING Global.DatabaseReader (
+CREATE OR REPLACE SOURCE plx_dbo_source_3 USING Global.DatabaseReader ( 
+  DatabaseProviderType: 'Default', 
+  Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
+  Username: 'poc_user', 
+  QuiesceOnILCompletion: true, 
+  FetchSize: 2000, 
+  Tables: 'dbo.ExternalSystemTransactionData;dbo.Slot;dbo.TranQueueHist', 
+  adapterName: 'DatabaseReader', 
+  ConnectionURL: 'jdbc:sqlserver://10.160.188.167:1433;DatabaseName=pharmogistics', 
+  Password_encrypted: 'true' ) 
+OUTPUT TO PLX_Initial_Load_multiple_sources_OutputStream;
+
+CREATE OR REPLACE SOURCE plx_dbo_source_2 USING Global.DatabaseReader ( 
   DatabaseProviderType: 'Default', 
   Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
   Username: 'poc_user', 
   QuiesceOnILCompletion: true, 
   FetchSize: 2000, 
   adapterName: 'DatabaseReader', 
+  Tables: 'dbo.TranQueue;dbo.HoldReason;dbo.ReplacementCostHistory;dbo.LatestCostHistory;dbo.Location;dbo.Formulary;dbo.RemoteOrderDetail;dbo.PrintLabel;dbo.PrintLabelXref;dbo.SystemSource;dbo.BatchHeader;dbo.DeptTranPriorityXref;dbo.TranPriority;dbo.BatchDetail;dbo.Facility;dbo.Department;dbo.ISA;dbo.Rack;dbo.Shelf;dbo.Bin;dbo.ExternalIsa;dbo.ExternalIsaFormulary;dbo.LastParLevelForExternalIsa;dbo.DeptFormulary;dbo.NDCMaster;dbo.InvoiceDetail', 
   ConnectionURL: 'jdbc:sqlserver://10.160.188.167:1433;DatabaseName=pharmogistics', 
-  Password_encrypted: 'true', 
-  Tables: 'dbo.TranQueue;dbo.HoldReason;dbo.ReplacementCostHistory;dbo.LatestCostHistory;dbo.Location;dbo.Formulary;dbo.RemoteOrderDetail;dbo.PrintLabel;dbo.PrintLabelXref;dbo.SystemSource;dbo.BatchHeader;dbo.DeptTranPriorityXref;dbo.TranPriority;dbo.BatchDetail;dbo.Facility;dbo.Department;dbo.ISA;dbo.Rack;dbo.Shelf;dbo.Bin;dbo.ExternalIsa;dbo.ExternalIsaFormulary;dbo.LastParLevelForExternalIsa;dbo.DeptFormulary;dbo.NDCMaster;dbo.InvoiceDetail' )
+  Password_encrypted: 'true' ) 
 OUTPUT TO PLX_Initial_Load_multiple_sources_OutputStream;
 
-CREATE OR REPLACE SOURCE plx_dbo_source_1 USING Global.DatabaseReader (
+CREATE OR REPLACE SOURCE plx_dbo_source_1 USING Global.DatabaseReader ( 
   Tables: 'dbo.PhysicalInventoryHistory', 
   DatabaseProviderType: 'Default', 
   Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
@@ -27,31 +39,19 @@ CREATE OR REPLACE SOURCE plx_dbo_source_1 USING Global.DatabaseReader (
   Password_encrypted: 'true' ) 
 OUTPUT TO PLX_Initial_Load_multiple_sources_OutputStream;
 
-CREATE OR REPLACE SOURCE plx_dbo_source_3 USING Global.DatabaseReader (
-  DatabaseProviderType: 'Default', 
-  Password: 'v1mXQqmmg8ALT/GQ8UopJA==', 
-  Username: 'poc_user', 
-  QuiesceOnILCompletion: true, 
-  FetchSize: 2000, 
-  Tables: 'dbo.ExternalSystemTransactionData;dbo.Slot;dbo.TranQueueHist',
-  adapterName: 'DatabaseReader', 
-  ConnectionURL: 'jdbc:sqlserver://10.160.188.167:1433;DatabaseName=pharmogistics', 
-  Password_encrypted: 'true' ) 
-OUTPUT TO PLX_Initial_Load_multiple_sources_OutputStream;
-
-CREATE OR REPLACE TARGET PLX_Initial_Load_multiple_sources_Destination USING Global.SnowflakeWriter (
+CREATE OR REPLACE TARGET PLX_Initial_Load_multiple_sources_Destination USING Global.SnowflakeWriter ( 
   password_encrypted: 'true', 
-  tables: '"pharmogistics"."dbo"."TranQueue","dbo"."TranQueue";"pharmogistics"."dbo"."TranQueueHist","dbo"."TranQueueHist";"pharmogistics"."dbo"."HoldReason","dbo"."HoldReason";"pharmogistics"."dbo"."ReplacementCostHistory","dbo"."ReplacementCostHistory";"pharmogistics"."dbo"."LatestCostHistory","dbo"."LatestCostHistory";"pharmogistics"."dbo"."Location","dbo"."Location";"pharmogistics"."dbo"."Formulary","dbo"."Formulary";"pharmogistics"."dbo"."RemoteOrderDetail","dbo"."RemoteOrderDetail";"pharmogistics"."dbo"."InvoiceDetail","dbo"."InvoiceDetail";"pharmogistics"."dbo"."DeptFormulary","dbo"."DeptFormulary";"pharmogistics"."dbo"."NDCMaster","dbo"."NDCMaster";"pharmogistics"."dbo"."PrintLabel","dbo"."PrintLabel";"pharmogistics"."dbo"."PrintLabelXref","dbo"."PrintLabelXref";"pharmogistics"."dbo"."SystemSource","dbo"."SystemSource";"pharmogistics"."dbo"."BatchHeader","dbo"."BatchHeader";"pharmogistics"."dbo"."DeptTranPriorityXref","dbo"."DeptTranPriorityXref";"pharmogistics"."dbo"."TranPriority","dbo"."TranPriority";"pharmogistics"."dbo"."BatchDetail","dbo"."BatchDetail";"pharmogistics"."dbo"."ExternalSystemTransactionData","dbo"."ExternalSystemTransactionData";"pharmogistics"."dbo"."Facility","dbo"."Facility";"pharmogistics"."dbo"."Department","dbo"."Department";"pharmogistics"."dbo"."ISA","dbo"."ISA";"pharmogistics"."dbo"."Rack","dbo"."Rack";"pharmogistics"."dbo"."Shelf","dbo"."Shelf";"pharmogistics"."dbo"."Bin","dbo"."Bin";"pharmogistics"."dbo"."Slot","dbo"."Slot";"pharmogistics"."dbo"."ExternalIsa","dbo"."ExternalIsa";"pharmogistics"."dbo"."ExternalIsaFormulary","dbo"."ExternalIsaFormulary";"pharmogistics"."dbo"."LastParLevelForExternalIsa","dbo"."LastParLevelForExternalIsa";"pharmogistics"."dbo"."PhysicalInventoryHistory","dbo"."PhysicalInventoryHistory"', 
   CDDLAction: 'Process', 
   azureContainerName: 'striim-snowflake-container', 
   optimizedMerge: 'false', 
   password: 'Ulj+zHFpp8dnd6OIc+yePw==', 
   columnDelimiter: '|', 
+  tables: '"pharmogistics"."dbo"."TranQueue",CDC_STRIIM_PLX_DB."dbo"."TranQueue";"pharmogistics"."dbo"."TranQueueHist",CDC_STRIIM_PLX_DB."dbo"."TranQueueHist";"pharmogistics"."dbo"."HoldReason",CDC_STRIIM_PLX_DB."dbo"."HoldReason";"pharmogistics"."dbo"."ReplacementCostHistory",CDC_STRIIM_PLX_DB."dbo"."ReplacementCostHistory";"pharmogistics"."dbo"."LatestCostHistory",CDC_STRIIM_PLX_DB."dbo"."LatestCostHistory";"pharmogistics"."dbo"."Location",CDC_STRIIM_PLX_DB."dbo"."Location";"pharmogistics"."dbo"."Formulary",CDC_STRIIM_PLX_DB."dbo"."Formulary";"pharmogistics"."dbo"."RemoteOrderDetail",CDC_STRIIM_PLX_DB."dbo"."RemoteOrderDetail";"pharmogistics"."dbo"."InvoiceDetail",CDC_STRIIM_PLX_DB."dbo"."InvoiceDetail";"pharmogistics"."dbo"."DeptFormulary",CDC_STRIIM_PLX_DB."dbo"."DeptFormulary";"pharmogistics"."dbo"."NDCMaster",CDC_STRIIM_PLX_DB."dbo"."NDCMaster";"pharmogistics"."dbo"."PrintLabel",CDC_STRIIM_PLX_DB."dbo"."PrintLabel";"pharmogistics"."dbo"."PrintLabelXref",CDC_STRIIM_PLX_DB."dbo"."PrintLabelXref";"pharmogistics"."dbo"."SystemSource",CDC_STRIIM_PLX_DB."dbo"."SystemSource";"pharmogistics"."dbo"."BatchHeader",CDC_STRIIM_PLX_DB."dbo"."BatchHeader";"pharmogistics"."dbo"."DeptTranPriorityXref",CDC_STRIIM_PLX_DB."dbo"."DeptTranPriorityXref";"pharmogistics"."dbo"."TranPriority",CDC_STRIIM_PLX_DB."dbo"."TranPriority";"pharmogistics"."dbo"."BatchDetail",CDC_STRIIM_PLX_DB."dbo"."BatchDetail";"pharmogistics"."dbo"."ExternalSystemTransactionData",CDC_STRIIM_PLX_DB."dbo"."ExternalSystemTransactionData";"pharmogistics"."dbo"."Facility",CDC_STRIIM_PLX_DB."dbo"."Facility";"pharmogistics"."dbo"."Department",CDC_STRIIM_PLX_DB."dbo"."Department";"pharmogistics"."dbo"."ISA",CDC_STRIIM_PLX_DB."dbo"."ISA";"pharmogistics"."dbo"."Rack",CDC_STRIIM_PLX_DB."dbo"."Rack";"pharmogistics"."dbo"."Shelf",CDC_STRIIM_PLX_DB."dbo"."Shelf";"pharmogistics"."dbo"."Bin",CDC_STRIIM_PLX_DB."dbo"."Bin";"pharmogistics"."dbo"."Slot",CDC_STRIIM_PLX_DB."dbo"."Slot";"pharmogistics"."dbo"."ExternalIsa",CDC_STRIIM_PLX_DB."dbo"."ExternalIsa";"pharmogistics"."dbo"."ExternalIsaFormulary",CDC_STRIIM_PLX_DB."dbo"."ExternalIsaFormulary";"pharmogistics"."dbo"."LastParLevelForExternalIsa",CDC_STRIIM_PLX_DB."dbo"."LastParLevelForExternalIsa";"pharmogistics"."dbo"."PhysicalInventoryHistory",CDC_STRIIM_PLX_DB."dbo"."PhysicalInventoryHistory"', 
+  connectionUrl: 'jdbc:snowflake://wj01378.west-us-2.azure.snowflakecomputing.com/?db=CDC_STRIIM_PLX_DB&schema=dbo&warehouse=CDC_STRIIM_WH&role=SG-STS-NRT-DEV-FG-DEV-CONTRIBUTOR', 
   s3Region: 'us-west-1', 
   appendOnly: 'false', 
   ParallelThreads: '30', 
   uploadPolicy: 'eventcount:10000,interval:5m', 
-  connectionUrl: 'jdbc:snowflake://wj01378.west-us-2.azure.snowflakecomputing.com/?db=CDC_STRIIM_DB&schema=dbo&warehouse=CDC_STRIIM_WH&role=SG-STS-NRT-DEV-FG-DEV-CONTRIBUTOR', 
   externalStageType: 'Local', 
   adapterName: 'SnowflakeWriter', 
   username: 'softserve', 
